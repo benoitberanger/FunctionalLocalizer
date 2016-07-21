@@ -1,5 +1,10 @@
 # FunctionalLocalizer
-Adaptation from E-Prime to Psychtoolbox of Pinel P. (CEA) fMRI FunctionalLocalizer
+
+Adaptation from E-Prime to Psychtoolbox of P. Pinel (NeuroSpin CEA, France) fMRI FunctionalLocalizer
+
+Website of the original protocol : http://www.unicog.org/pm/pmwiki.php/Site/FunctionalLocalizer
+
+Link of the paper : http://www.unicog.org/docs/Localizer/Pinel_DatabaseLocalizer_BMCneurosc2008.pdf
 
 
 # Requirement
