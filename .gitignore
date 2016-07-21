@@ -1,0 +1,12 @@
+# MATLAB / Octave
+*.asv
+*.m~
+*.mat
+
+# Videos
+*.mov
+
+# OSX
+._*
+.DS_Store*
+
