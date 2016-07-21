@@ -25,7 +25,7 @@ switch get(hObject,'Tag')
         Task = 'Calibration';
         
     case 'pushbutton_Instructions'
-        Task = 'Instruction';
+        Task = 'Instructions';
         
     case 'pushbutton_Session'
         Task                     = 'Session';

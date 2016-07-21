@@ -26,37 +26,108 @@ try
     
     %% Start recording eye motions
     
-    
     % no eyelink for calibration
     
     
+    %% Start
+    
+    switch DataStruct.OperationMode
+        case 'Acquisition'
+            HideCursor;
+        case 'FastDebug'
+        case 'RealisticDebug'
+        otherwise
+    end
+    
+    % Flip video
+    Screen( 'Flip' , DataStruct.PTB.wPtr );
+    
+    % Synchronization
+    StartTime = GetSecs;
+    
+    ER.Data = EP.Data;
+    ER.EventCount = EP.EventCount; %#ok<*STRNU>
+    StopTime = GetSecs;
+    
+    
     %% Go
-
+    
     % ---------------------------------------------------------------------
-    % Presentation slide
+    % Left button calibration
     
-    DrawFormattedText(DataStruct.PTB.wPtr, 'calibration son/audio' , 'center', 'center');
-
-    vbl = Screen('Flip',DataStruct.PTB.wPtr);
+    fprintf('\n')
+    fprintf('Left button calibration : ? \n')
     
-    WaitSecs(1);
-    vbl = Screen('Flip',DataStruct.PTB.wPtr);
-    WaitSecs(1);
+    txt = ' appuyer sue le bouton gauche ';
+    DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',DataStruct.Parameters.Text.Color,[],[],[],2);
+    Screen('Flip',DataStruct.PTB.wPtr);
     
-    %%
+    while 1
+        
+        [keyIsDown, ~, keyCode] = KbCheck;
+        if keyIsDown
+            if keyCode(DataStruct.Parameters.Keybinds.Left_Yellow_y_ASCII)
+                
+                txt = ' appuyer sue le bouton gauche ';
+                DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',[0 255 0],[],[],[],2);
+                Screen('Flip',DataStruct.PTB.wPtr);
+                fprintf('Left button calibration : OK \n')
+                
+                WaitSecs(0.5);
+                break
+                
+            end
+        end
+        
+    end
+    
+    
+    Calibration.Pause(DataStruct.PTB.wPtr, 0.5);
+    
     % ---------------------------------------------------------------------
-    % Instructions : audio
+    % Right button calibration
+    
+    fprintf('\n')
+    fprintf('Right button calibration : ? \n')
+    
+    txt = ' appuyer sue le bouton droit ';
+    DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',DataStruct.Parameters.Text.Color,[],[],[],2);
+    Screen('Flip',DataStruct.PTB.wPtr);
+    
+    while 1
+        
+        [keyIsDown, ~, keyCode] = KbCheck;
+        if keyIsDown
+            if keyCode(DataStruct.Parameters.Keybinds.Right_Blue_b_ASCII)
+                
+                txt = ' appuyer sue le bouton droit ';
+                DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',[0 255 0],[],[],[],2);
+                Screen('Flip',DataStruct.PTB.wPtr);
+                fprintf('Right button calibration : OK \n')
+                
+                WaitSecs(0.5);
+                
+                break
+                
+            end
+        end
+        
+    end
+    
+    Calibration.Pause(DataStruct.PTB.wPtr, 0.5);
+    
+    
+    % ---------------------------------------------------------------------
+    % Instructions : Sound calibration
     
     txt = ' nous allons vous faire entendre \n plusieurs fois une phrase : \n indiquez si le son est suffisement fort \n mais sans être douloureux ';
-    DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',[],[],[],[],2);
-
-    vbl = Screen('Flip',DataStruct.PTB.wPtr);
-    WaitSecs(1);
+    DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',DataStruct.Parameters.Text.Color,[],[],[],2);
+    Screen('Flip',DataStruct.PTB.wPtr);
+    WaitSecs(10);
     
-    vbl = Screen('Flip',DataStruct.PTB.wPtr);
-    WaitSecs(1);
+    Calibration.Pause(DataStruct.PTB.wPtr, 1);
     
-    %%
+    
     % ---------------------------------------------------------------------
     % Sound calibration
     
@@ -65,11 +136,8 @@ try
     
     wav_path = 'wav';
     wavefile = 'calc40.wav';
-    [y, Fs, nbits] = wavread([wav_path filesep wavefile]);
-
+    [y, ~, ~] = wavread([wav_path filesep wavefile]);
     PsychPortAudio('FillBuffer', DataStruct.PTB.Playback_pahandle, [y y]');
-    
-    
     
     fprintf('Press %s to repeat sound \n',upper(KbName(DataStruct.Parameters.Keybinds.emulTTL_s_ASCII)))
     fprintf('Press %s to pass \n',upper(KbName(DataStruct.Parameters.Keybinds.TTL_t_ASCII)))
@@ -78,23 +146,18 @@ try
     while ~calibrated
         
         startTime = PsychPortAudio('Start', DataStruct.PTB.Playback_pahandle , 1 , 0, 1);
-        
         PsychPortAudio('Stop', DataStruct.PTB.Playback_pahandle, 1, 1);
         
         txt = 'volume ?';
-        DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',[],[],[],[],2);
-        vbl = Screen('Flip',DataStruct.PTB.wPtr);
+        DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',DataStruct.Parameters.Text.Color,[],[],[],2);
+        Screen('Flip',DataStruct.PTB.wPtr);
         
         keyIsDown = 0;
         while ~keyIsDown
-            
-            [keyIsDown, secs, keyCode] = KbCheck;
-            
+            [keyIsDown, ~, keyCode] = KbCheck;
             if keyIsDown
-                
                 if keyCode(DataStruct.Parameters.Keybinds.emulTTL_s_ASCII)
-                    vbl = Screen('Flip',DataStruct.PTB.wPtr);
-                    WaitSecs(0.1);
+                    Calibration.Pause(DataStruct.PTB.wPtr, 0.1);
                     
                 elseif keyCode(DataStruct.Parameters.Keybinds.TTL_t_ASCII)
                     calibrated = 1;
@@ -102,28 +165,24 @@ try
                 end
                 
             end
-            
         end
         
     end
-        
-    WaitSecs(1);
-    vbl = Screen('Flip',DataStruct.PTB.wPtr);
     
     
-     %%
+    Calibration.Pause(DataStruct.PTB.wPtr, 1);
+    
+    
     % ---------------------------------------------------------------------
-    % Instructions : Cross
+    % Instructions : Screen calibtration
     
     txt = ' assurez-vous que la croix rouge \n est bien au centre \n de votre champ de vision';
-    DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',[],[],[],[],2);
-    vbl = Screen('Flip',DataStruct.PTB.wPtr);
-    WaitSecs(1);
+    DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',DataStruct.Parameters.Text.Color,[],[],[],2);
+    Screen('Flip',DataStruct.PTB.wPtr);
+    WaitSecs(5);
     
-    vbl = Screen('Flip',DataStruct.PTB.wPtr);
-    WaitSecs(1);
+    Calibration.Pause(DataStruct.PTB.wPtr, 0.5);
     
-    %%
     
     % ---------------------------------------------------------------------
     % Screen calibtration
@@ -140,112 +199,31 @@ try
         Screen('Close', Cross.texture)
         Cross.texturePtr = Screen('MakeTexture', DataStruct.PTB.wPtr, Cross.img);
     end
-    
     Screen('DrawTexture', DataStruct.PTB.wPtr, Cross.texturePtr)
-    
-    vbl = Screen('Flip',DataStruct.PTB.wPtr);
-
+    Screen('Flip',DataStruct.PTB.wPtr);
     
     fprintf('Press %s to pass \n',upper(KbName(DataStruct.Parameters.Keybinds.TTL_t_ASCII)))
     
     while 1
-        
-        [keyIsDown, secs, keyCode] = KbCheck;
-        
+        [keyIsDown, ~, keyCode] = KbCheck;
         if keyIsDown
-            
             if keyCode(DataStruct.Parameters.Keybinds.TTL_t_ASCII)
                 
                 fprintf('Screen calibration : OK \n')
                 break
+                
             end
-            
         end
-        
     end
     
     
-    vbl = Screen('Flip',DataStruct.PTB.wPtr);
-    WaitSecs(1);
-    
-    %%
-    
-    % ---------------------------------------------------------------------
-    % Left button calibration :
-    
-    fprintf('\n')
-    fprintf('Left button calibration : ? \n')
-    
-    txt = ' appuyer sue le bouton gauche ';
-    DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',[],[],[],[],2);
+    Calibration.Pause(DataStruct.PTB.wPtr, 1);
 
-    vbl = Screen('Flip',DataStruct.PTB.wPtr);
-    
-    while 1
-        
-        [keyIsDown, secs, keyCode] = KbCheck;
-        
-        if keyIsDown
-            
-            if keyCode(DataStruct.Parameters.Keybinds.Left_Yellow_y_ASCII)
-                
-                fprintf('Right button calibration : OK \n')
-                break
-                
-            end
-            
-        end
-        
-    end
-    
-    
-    vbl = Screen('Flip',DataStruct.PTB.wPtr);
-    WaitSecs(1);
-    
-    % ---------------------------------------------------------------------
-    % Right button calibration :
-    
-    fprintf('\n')
-    fprintf('Right button calibration : ? \n')
-    
-    txt = ' appuyer sue le bouton droit ';
-    DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',[],[],[],[],2);
-
-    vbl = Screen('Flip',DataStruct.PTB.wPtr);
-    
-    while 1
-        
-        [keyIsDown, secs, keyCode] = KbCheck;
-        
-        if keyIsDown
-            
-            if keyCode(DataStruct.Parameters.Keybinds.Right_Blue_b_ASCII)
-                
-                fprintf('Right button calibration : OK \n')
-                break
-                
-            end
-            
-        end
-        
-    end
-    
-    vbl = Screen('Flip',DataStruct.PTB.wPtr);
-    WaitSecs(1);
-    
-    %% debug
-    
-    Common.StartTimeEvent;
-    ER.Data = EP.Data;
-    ER.EventCount = EP.EventCount;
-    StopTime = GetSecs;
-    
-    ShowCursor;
-    Priority( DataStruct.PTB.oldLevel );
-    
     
     %% End of stimulation
     
+    ShowCursor;
+    Priority( DataStruct.PTB.oldLevel );
     Common.EndOfStimulationScript;
     
     Common.Movie.FinalizeMovie;
