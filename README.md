@@ -7,6 +7,11 @@ Website of the original protocol : http://www.unicog.org/pm/pmwiki.php/Site/Func
 Link of the paper : http://www.unicog.org/docs/Localizer/Pinel_DatabaseLocalizer_BMCneurosc2008.pdf
 
 
+This adaptiation is build to be used at :
+- CENIR : http://www.cenir.org/
+- ICM : http://icm-institute.org/.
+
+
 # Requirement
 
 Psychtoolbox : http://psychtoolbox.org/
