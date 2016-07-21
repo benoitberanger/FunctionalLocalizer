@@ -75,7 +75,7 @@ try
         clic_spot.R = ~cellfun(@isempty,clic_spot.R);
         clic_spot.R = find(clic_spot.R);
         
-        clic_spot.L = regexp(DataStruct.TaskData.KL.KbEvents(:,1),KbName(DataStruct.Parameters.Keybinds.Right_Yellow_y_ASCII));
+        clic_spot.L = regexp(DataStruct.TaskData.KL.KbEvents(:,1),KbName(DataStruct.Parameters.Keybinds.Left_Yellow_y_ASCII));
         clic_spot.L = ~cellfun(@isempty,clic_spot.L);
         clic_spot.L = find(clic_spot.L);
         

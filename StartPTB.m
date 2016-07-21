@@ -10,10 +10,10 @@ PsychPortAudio('Close')
 
 % Playback device initialization
 PTB.Playback_pahandle = PsychPortAudio('Open', [],...
-    DataStruct.Parameters.Playback_Mode,...
-    DataStruct.Parameters.Playback_LowLatencyMode,...
-    DataStruct.Parameters.Playback_freq,...
-    DataStruct.Parameters.Playback_Channels);
+    DataStruct.Parameters.Audio.Playback_Mode,...
+    DataStruct.Parameters.Audio.Playback_LowLatencyMode,...
+    DataStruct.Parameters.Audio.Playback_freq,...
+    DataStruct.Parameters.Audio.Playback_Channels);
 
 
 %% Video
@@ -71,6 +71,11 @@ PTB.FPS   = Screen('FrameRate', PTB.wPtr);
 % B&W colors
 PTB.Black = BlackIndex( PTB.wPtr );
 PTB.White = WhiteIndex( PTB.wPtr );
+
+% Text
+Screen('TextSize' , PTB.wPtr, DataStruct.Parameters.Text.Size);
+Screen('TextFont' , PTB.wPtr, DataStruct.Parameters.Text.Font);
+Screen('TextColor', PTB.wPtr, DataStruct.Parameters.Text.Color);
 
 
 %% Warm up
