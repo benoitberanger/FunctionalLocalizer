@@ -69,48 +69,38 @@ try
         
         N = length(names);
         
-        % CATCH
-        
-        catch_idx = regexp(DataStruct.TaskData.RR.Data(:,1),'Catch|Flash|Target');
-        catch_idx = ~cellfun(@isempty,catch_idx);
-        catch_idx = find(catch_idx);
-        
-        names{N+1}     = 'CATCH';
-        onsets{N+1}    = cell2mat(DataStruct.TaskData.RR.Data(catch_idx,2));
-        durations{N+1} = cell2mat(DataStruct.TaskData.RR.Data(catch_idx,3));
-        
         % CLICK
         
         clic_spot.R = regexp(DataStruct.TaskData.KL.KbEvents(:,1),KbName(DataStruct.Parameters.Keybinds.Right_Blue_b_ASCII));
         clic_spot.R = ~cellfun(@isempty,clic_spot.R);
         clic_spot.R = find(clic_spot.R);
         
-        clic_spot.L = regexp(DataStruct.TaskData.KL.KbEvents(:,1),KbName(DataStruct.Parameters.Keybinds.Right_Blue_y_ASCII));
+        clic_spot.L = regexp(DataStruct.TaskData.KL.KbEvents(:,1),KbName(DataStruct.Parameters.Keybinds.Right_Yellow_y_ASCII));
         clic_spot.L = ~cellfun(@isempty,clic_spot.L);
         clic_spot.L = find(clic_spot.L);
         
-        count = 1 ;
-        for side = {'R' ; 'L'}
+        count = 0 ;
+        Sides = {'R' ; 'L'};
+        for side = 1:length(Sides)
             
             count = count + 1 ;
             
             switch side
-                case 'R'
-                    names{N+count} = 'CLICK right';
-                case 'L'
-                    names{N+count} = 'CLICK left';
+                case 1
+                    names{N+count} = 'CLICK_right';
+                case 2
+                    names{N+count} = 'CLICK_left';
             end
             
-            if ~isempty(DataStruct.TaskData.KL.KbEvents{clic_spot.(side),2})
-                clic_idx = cell2mat(DataStruct.TaskData.KL.KbEvents{clic_spot.(side),2}(:,2)) == 1;
+            if ~isempty(DataStruct.TaskData.KL.KbEvents{clic_spot.(Sides{side}),2})
+                clic_idx = cell2mat(DataStruct.TaskData.KL.KbEvents{clic_spot.(Sides{side}),2}(:,2)) == 1;
                 clic_idx = find(clic_idx);
-                % The last click can be be unfinished : button down + end of stim =
-                % no button up
-                if isempty(DataStruct.TaskData.KL.KbEvents{clic_spot.(side),2}{clic_idx(end),3})
-                    DataStruct.TaskData.KL.KbEvents{clic_spot.(side),2}{clic_idx(end),3} =  DataStruct.TaskData.ER.Data{end,2} - DataStruct.TaskData.KL.KbEvents{clic_spot.(side),2}{clic_idx(end),1};
+                % The last click can be be unfinished : button down + end of stim = no button up
+                if isempty(DataStruct.TaskData.KL.KbEvents{clic_spot.(Sides{side}),2}{clic_idx(end),3})
+                    DataStruct.TaskData.KL.KbEvents{clic_spot.(Sides{side}),2}{clic_idx(end),3} =  DataStruct.TaskData.ER.Data{end,2} - DataStruct.TaskData.KL.KbEvents{clic_spot.(Sides{side}),2}{clic_idx(end),1};
                 end
-                onsets{N+count}    = cell2mat(DataStruct.TaskData.KL.KbEvents{clic_spot.(side),2}(clic_idx,1));
-                durations{N+count} = cell2mat(DataStruct.TaskData.KL.KbEvents{clic_spot.(side),2}(clic_idx,3));
+                onsets{N+count}    = cell2mat(DataStruct.TaskData.KL.KbEvents{clic_spot.(Sides{side}),2}(clic_idx,1));
+                durations{N+count} = cell2mat(DataStruct.TaskData.KL.KbEvents{clic_spot.(Sides{side}),2}(clic_idx,3));
             else
                 onsets{N+count}    = [];
                 durations{N+count} = [];

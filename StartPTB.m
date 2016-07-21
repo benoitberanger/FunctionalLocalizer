@@ -1,5 +1,24 @@
 function [ PTB ] = StartPTB( DataStruct )
 
+%% Audio 
+
+% Perform basic initialization of the sound driver:
+InitializePsychSound;
+
+% Close the audio device:
+PsychPortAudio('Close')
+
+% Playback device initialization
+PTB.Playback_pahandle = PsychPortAudio('Open', [],...
+    DataStruct.Parameters.Playback_Mode,...
+    DataStruct.Parameters.Playback_LowLatencyMode,...
+    DataStruct.Parameters.Playback_freq,...
+    DataStruct.Parameters.Playback_Channels);
+
+
+%% Video
+
+
 % Shortcut
 Video = DataStruct.Parameters.Video;
 

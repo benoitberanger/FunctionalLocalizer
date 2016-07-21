@@ -7,7 +7,7 @@ switch DataStruct.OperationMode
 end
 
 % Flip video
-Screen( 'Flip' , DataStruct.PTB.Window );
+Screen( 'Flip' , DataStruct.PTB.wPtr );
 
 % Synchronization
 StartTime = WaitForTTL( DataStruct );

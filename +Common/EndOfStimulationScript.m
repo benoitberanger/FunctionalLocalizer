@@ -33,9 +33,6 @@ KL.BuildGraph;
 TaskData.KL = KL;
 
 % Save some values
-TaskData.Speed            = Speed;
-TaskData.PixelPerDegree   = PixelPerDegree;
-TaskData.DotVisualAngle   = DotVisualAngle;
 TaskData.StartTime        = StartTime;
 TaskData.StopTime         = StopTime;
 

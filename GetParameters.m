@@ -37,6 +37,23 @@ switch DataStruct.Task
 end
 
 
+%%%%%%%%%%%
+%  Audio  %
+%%%%%%%%%%%
+
+Parameters.SamplingRate            = 44100; % Hz
+
+Parameters.Playback_Mode           = 1; % 1 = playback, 2 = record
+Parameters.Playback_LowLatencyMode = 1; % {0,1,2,3,4}
+Parameters.Playback_freq           = Parameters.SamplingRate;
+Parameters.Playback_Channels       = 2; % 1 = mono, 2 = stereo
+
+% Parameters.Record_Mode             = 2; % 1 = playback, 2 = record
+% Parameters.Record_LowLatencyMode   = 0; % {0,1,2,3,4}
+% Parameters.Record_freq             = SamplingRate;
+% Parameters.Record_Channels         = 1; % 1 = mono, 2 = stereo
+
+
 %%%%%%%%%%%%%%
 %  Keybinds  %
 %%%%%%%%%%%%%%

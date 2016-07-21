@@ -275,7 +275,7 @@ end
 DataStruct.WindowedMode = WindowedMode;
 
 
-%% Open PTB window
+%% Open PTB window & sound
 
 DataStruct.PTB = StartPTB( DataStruct );
 
@@ -285,7 +285,7 @@ DataStruct.PTB = StartPTB( DataStruct );
 switch Task
     
     case 'EyelinkCalibration'
-        Eyelink.Calibration( DataStruct.PTB.Window );
+        Eyelink.Calibration( DataStruct.PTB.wPtr );
         TaskData.ER.Data = {};
         TaskData.IsEyelinkRreadyToRecord = 1;
         
@@ -342,7 +342,7 @@ if strcmp(SaveMode,'SaveData') && strcmp(OperationMode,'Acquisition')
     save([DataFile '_SPM'], 'names', 'onsets', 'durations');
     
     % BrainVoyager data organization
-    spm2bv( names , onsets , durations , DataStruct.DataFile )
+    % spm2bv( names , onsets , durations , DataStruct.DataFile )
     
 end
 
