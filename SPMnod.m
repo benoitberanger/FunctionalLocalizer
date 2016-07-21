@@ -69,6 +69,16 @@ try
         
         N = length(names);
         
+        % CATCH
+        
+        catch_idx = regexp(DataStruct.TaskData.RR.Data(:,1),'Catch|Flash|Target');
+        catch_idx = ~cellfun(@isempty,catch_idx);
+        catch_idx = find(catch_idx);
+        
+        names{N+1}     = 'CATCH';
+        onsets{N+1}    = cell2mat(DataStruct.TaskData.RR.Data(catch_idx,2));
+        durations{N+1} = cell2mat(DataStruct.TaskData.RR.Data(catch_idx,3));
+        
         % CLICK
         
         clic_spot.R = regexp(DataStruct.TaskData.KL.KbEvents(:,1),KbName(DataStruct.Parameters.Keybinds.Right_Blue_b_ASCII));
@@ -79,7 +89,7 @@ try
         clic_spot.L = ~cellfun(@isempty,clic_spot.L);
         clic_spot.L = find(clic_spot.L);
         
-        count = 0 ;
+        count = 1 ;
         for side = {'R' ; 'L'}
             
             count = count + 1 ;
