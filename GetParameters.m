@@ -67,12 +67,16 @@ Parameters.Audio.Playback_Channels       = 2; % 1 = mono, 2 = stereo
 
 KbName('UnifyKeyNames');
 
-Parameters.Keybinds.Right_Blue_b_ASCII   = KbName('b');
-Parameters.Keybinds.Left_Yellow_y_ASCII = KbName('y');
 
-Parameters.Keybinds.TTL_t_ASCII          = KbName('t');
+Parameters.Keybinds.TTL_t_ASCII          = KbName('t'); % MRI trigger has to be the first defined key
 Parameters.Keybinds.emulTTL_s_ASCII      = KbName('s');
 Parameters.Keybinds.Stop_Escape_ASCII    = KbName('ESCAPE');
+
+Parameters.Keybinds.Right_Blue_b_ASCII   = KbName('b');
+Parameters.Keybinds.Left_Yellow_y_ASCII  = KbName('y');
+
+Parameters.Keybinds.LeftArrow            = KbName('LeftArrow');
+Parameters.Keybinds.RightArrow           = KbName('RightArrow');
 
 
 %% Echo in command window
