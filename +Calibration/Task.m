@@ -5,9 +5,6 @@ try
     
     Calibration.Planning;
     
-    EP.AddPlanning({ 'empty' NextOnset(EP) 1 });
-    EP.AddPlanning({ 'StopTime' NextOnset(EP) 0 });
-    
     % End of preparations
     EP.BuildGraph;
     TaskData.EP = EP;
@@ -30,23 +27,8 @@ try
     
     %% Start
     
-    switch DataStruct.OperationMode
-        case 'Acquisition'
-            HideCursor;
-        case 'FastDebug'
-        case 'RealisticDebug'
-        otherwise
-    end
-    
-    % Flip video
-    Screen( 'Flip' , DataStruct.PTB.wPtr );
-    
-    % Synchronization
-    StartTime = GetSecs;
-    
-    ER.Data = EP.Data;
-    ER.EventCount = EP.EventCount; %#ok<*STRNU>
-    StopTime = GetSecs;
+    Common.StartTimeEvent
+    evt = 1;
     
     
     %% Go
@@ -57,9 +39,11 @@ try
     fprintf('\n')
     fprintf('Left button calibration : ? \n')
     
+    % DrawText
     txt = ' appuyer sue le bouton gauche ';
     DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',DataStruct.Parameters.Text.Color,[],[],[],2);
-    Screen('Flip',DataStruct.PTB.wPtr);
+    vbl = Screen('Flip',DataStruct.PTB.wPtr);
+    Calibration.AddEvent;
     
     while 1
         
@@ -69,16 +53,18 @@ try
                 
                 txt = ' appuyer sue le bouton gauche ';
                 DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',[0 255 0],[],[],[],2);
-                Screen('Flip',DataStruct.PTB.wPtr);
+                vbl = Screen('Flip',DataStruct.PTB.wPtr);
                 fprintf('Left button calibration : OK \n')
+                Calibration.AddEvent;
                 
-                tmax = 0.5;
+                tmax = EP.Data{evt,3};
                 Common.While;
                 
                 break
                 
             elseif keyCode(DataStruct.Parameters.Keybinds.RightArrow)
                 
+                Calibration.AddEvent;
                 fprintf('Left button calibration : skipped \n')
                 
                 break
@@ -88,8 +74,10 @@ try
         
     end
     
-    tmax = 0.5;
+    tmax = EP.Data{evt+1,3};
     Common.FlipWhile
+    Calibration.AddEvent;
+    
     
     % ---------------------------------------------------------------------
     % Right button calibration
@@ -99,7 +87,8 @@ try
     
     txt = ' appuyer sue le bouton droit ';
     DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',DataStruct.Parameters.Text.Color,[],[],[],2);
-    Screen('Flip',DataStruct.PTB.wPtr);
+    vbl = Screen('Flip',DataStruct.PTB.wPtr);
+    Calibration.AddEvent;
     
     while 1
         
@@ -109,16 +98,18 @@ try
                 
                 txt = ' appuyer sue le bouton droit ';
                 DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',[0 255 0],[],[],[],2);
-                Screen('Flip',DataStruct.PTB.wPtr);
+                vbl = Screen('Flip',DataStruct.PTB.wPtr);
                 fprintf('Right button calibration : OK \n')
+                Calibration.AddEvent;
                 
-                tmax = 0.5;
+                tmax = EP.Data{evt,3};
                 Common.While;
                 
                 break
                 
             elseif keyCode(DataStruct.Parameters.Keybinds.RightArrow)
                 
+                Calibration.AddEvent;
                 fprintf('Right button calibration : skipped \n')
                 
                 break
@@ -128,8 +119,9 @@ try
         
     end
     
-    tmax = 0.5;
+    tmax = EP.Data{evt+1,3};
     Common.FlipWhile
+    Calibration.AddEvent;
     
     
     % ---------------------------------------------------------------------
@@ -137,12 +129,14 @@ try
     
     txt = ' nous allons vous faire entendre \n plusieurs fois une phrase : \n indiquez si le son est suffisement fort \n mais sans être douloureux ';
     DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',DataStruct.Parameters.Text.Color,[],[],[],2);
-    Screen('Flip',DataStruct.PTB.wPtr);
-    tmax = 10;
+    vbl = Screen('Flip',DataStruct.PTB.wPtr);
+    Calibration.AddEvent;
+    tmax = EP.Data{evt,3};
     Common.While;
     
-    tmax = 1;
+    tmax = EP.Data{evt+1,3};
     Common.FlipWhile
+    Calibration.AddEvent;
     
     
     % ---------------------------------------------------------------------
@@ -159,6 +153,8 @@ try
     fprintf('Press %s to repeat sound \n',upper(KbName(DataStruct.Parameters.Keybinds.emulTTL_s_ASCII)))
     fprintf('Press %s to pass \n',upper(KbName(DataStruct.Parameters.Keybinds.TTL_t_ASCII)))
     
+    is_first = 1;
+    
     calibrated = 0;
     while ~calibrated
         
@@ -167,15 +163,20 @@ try
         
         txt = 'volume ?';
         DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',DataStruct.Parameters.Text.Color,[],[],[],2);
-        Screen('Flip',DataStruct.PTB.wPtr);
+        vbl = Screen('Flip',DataStruct.PTB.wPtr);
+        if is_first
+            Calibration.AddEvent;
+            is_first = 0;
+        end
         
         while 1
             [keyIsDown, ~, keyCode] = KbCheck;
             if keyIsDown
                 
                 if keyCode(DataStruct.Parameters.Keybinds.emulTTL_s_ASCII)
-                    tmax = 0.1;
+                    tmax = repeat_microtime;
                     Common.FlipWhile
+                    
                     break
                     
                 elseif keyCode(DataStruct.Parameters.Keybinds.TTL_t_ASCII)
@@ -194,9 +195,11 @@ try
         end
         
     end
+    Calibration.AddEvent
     
-    tmax = 1;
+    tmax = EP.Data{evt+1,3};
     Common.FlipWhile
+    Calibration.AddEvent
     
     
     % ---------------------------------------------------------------------
@@ -204,12 +207,14 @@ try
     
     txt = ' assurez-vous que la croix rouge \n est bien au centre \n de votre champ de vision';
     DrawFormattedText(DataStruct.PTB.wPtr, txt , 'center', 'center',DataStruct.Parameters.Text.Color,[],[],[],2);
-    Screen('Flip',DataStruct.PTB.wPtr);
-    tmax = 5;
+    vbl = Screen('Flip',DataStruct.PTB.wPtr);
+    Calibration.AddEvent
+    tmax = EP.Data{evt,3};
     Common.While;
     
-    tmax = 0.5;
+    tmax = EP.Data{evt+1,3};
     Common.FlipWhile
+    Calibration.AddEvent
     
     
     % ---------------------------------------------------------------------
@@ -228,7 +233,8 @@ try
         Cross.texturePtr = Screen('MakeTexture', DataStruct.PTB.wPtr, Cross.img);
     end
     Screen('DrawTexture', DataStruct.PTB.wPtr, Cross.texturePtr)
-    Screen('Flip',DataStruct.PTB.wPtr);
+    vbl = Screen('Flip',DataStruct.PTB.wPtr);
+    Calibration.AddEvent
     
     fprintf('Press %s to pass \n',upper(KbName(DataStruct.Parameters.Keybinds.TTL_t_ASCII)))
     
@@ -238,24 +244,32 @@ try
             if keyCode(DataStruct.Parameters.Keybinds.TTL_t_ASCII)
                 
                 fprintf('Screen calibration : OK \n')
+                
                 break
                 
             elseif keyCode(DataStruct.Parameters.Keybinds.RightArrow)
+                
                 fprintf('Screen calibration : skipped \n')
+                
                 break
                 
             end
         end
     end
     
-    tmax = 1;
+    tmax = EP.Data{evt+1,3};
     Common.FlipWhile
-
+    Calibration.AddEvent
+    
+    
+    %% End
+    
+    Common.StopTimeEvent;
+    
     
     %% End of stimulation
     
-    ShowCursor;
-    Priority( DataStruct.PTB.oldLevel );
+    
     Common.EndOfStimulationScript;
     
     Common.Movie.FinalizeMovie;

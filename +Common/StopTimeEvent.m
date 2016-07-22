@@ -1,5 +1,10 @@
 % Fixation duration handeling
-StopTime = WaitSecs('UntilTime', StartTime + EP.Data{evt,2} );
+switch DataStruct.Task
+    case 'Calibration'
+        StopTime = GetSecs;
+    otherwise
+        StopTime = WaitSecs('UntilTime', StartTime + EP.Data{evt,2} );
+end
 
 % Record StopTime
 ER.AddStopTime( 'StopTime' , StopTime - StartTime );

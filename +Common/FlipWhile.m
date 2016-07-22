@@ -1,3 +1,3 @@
-Screen('Flip',DataStruct.PTB.wPtr);
+vbl = Screen('Flip',DataStruct.PTB.wPtr);
 
 Common.While;
