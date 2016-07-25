@@ -15,7 +15,7 @@ try
                 '';
                 };
             
-        case 'Instruction'
+        case 'Instructions'
             names = {
                 '';
                 };
