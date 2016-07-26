@@ -9,7 +9,7 @@ try
     
     %% Tunning of the task
     
-    Session.Planning;
+    [ EP , Stimuli , Speed ] = Session.Planning( DataStruct , Stimuli ); %#ok<NODEF>
     
     % End of preparations
     EP.BuildGraph;
@@ -35,6 +35,13 @@ try
     
     flip_onset = 0;
     Exit_flag = 0;
+    
+    % Counters
+    Video_Computation = 0;
+    Audio_Computation = 0;
+    Video_Sentences   = 0;
+    Audio_Sentences   = 0;
+    Audio_Sinwave     = 0;
     
     % Loop over the EventPlanning
     for evt = 1 : size( EP.Data , 1 )
