@@ -7,7 +7,6 @@ EP     = EventPlanning(header);
 % NextOnset = PreviousOnset + PreviousDuration
 NextOnset = @(EP) EP.Data{end,2} + EP.Data{end,3};
 
-wav_path = 'wav';
 
 %% Define a planning <--- paradigme
 
@@ -83,7 +82,7 @@ words = {'un incident';'s''est produit';'à l''entrée';'de l''usine'};
 for w = 1 : length(words)
     str = words{w};
     dur = 0.250;
-    EP.AddPlanning({ 'Slide' NextOnset(EP) dur str});
+    EP.AddPlanning({ 'TextLoop' NextOnset(EP) dur str});
     EP.AddPlanning({ 'BlackScreen' NextOnset(EP) 0.100 []});
 end
 
@@ -97,7 +96,7 @@ words = {'calculez';'neuf';'moins';'trois'};
 for w = 1 : length(words)
     str = words{w};
     dur = 0.250;
-    EP.AddPlanning({ 'Slide' NextOnset(EP) dur str});
+    EP.AddPlanning({ 'TextLoop' NextOnset(EP) dur str});
     EP.AddPlanning({ 'BlackScreen' NextOnset(EP) 0.100 []});
 end
 
@@ -127,13 +126,13 @@ EP.AddPlanning({ 'BlackScreen' NextOnset(EP) 1 []});
 
 % .........................................................................
 
-wavdata = wavread([wav_path filesep 'exemple.wav']);
+wavdata = wavread([DataStruct.Parameters.wav 'exemple.wav']);
 dur = 4;
 EP.AddPlanning({ 'Audio' NextOnset(EP) dur wavdata'});
 
 % .........................................................................
 
-wavdata = wavread([wav_path filesep 'calc25.wav']);
+wavdata = wavread([DataStruct.Parameters.wav 'calc25.wav']);
 dur = 4;
 EP.AddPlanning({ 'Audio' NextOnset(EP) dur wavdata'});
 
@@ -145,7 +144,7 @@ EP.AddPlanning({ 'Slide' NextOnset(EP) dur str});
 
 % .........................................................................
 
-wavdata = wavread([wav_path filesep 'exemple_sine.wav']);
+wavdata = wavread([DataStruct.Parameters.wav 'exemple_sine.wav']);
 dur = 4;
 EP.AddPlanning({ 'Audio' NextOnset(EP) dur wavdata'});
 

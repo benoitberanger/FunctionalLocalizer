@@ -1,9 +1,15 @@
 function [ TaskData ] = Task( DataStruct )
 
 try
+    %% Load and prepare all stimuli
+    
+    Session.LoadStimuli;
+    Session.PrepareStimuli;
+    
+    
     %% Tunning of the task
     
-    Instructions.Planning;
+    Session.Planning;
     
     % End of preparations
     EP.BuildGraph;
@@ -22,7 +28,7 @@ try
     
     %% Start recording eye motions
     
-    % no eyelink for calibration
+    Common.StartRecordingEyelink;
     
     
     %% Go
@@ -58,32 +64,6 @@ try
                     
                     switch EP.Data{evt,1}
                         
-                        case 'Slide'
-                            DrawFormattedText(DataStruct.PTB.wPtr, EP.Data{evt,4} , 'center', 'center',[],[],[],[],2);
-                            flip_onset = Screen('Flip',DataStruct.PTB.wPtr);
-                            
-                        case 'SlideFixation'
-                            DrawFormattedText(DataStruct.PTB.wPtr, EP.Data{evt,4} , 'center', 0,[],[],[],[],2);
-                            Common.DrawFixation;
-                            flip_onset = Screen('Flip',DataStruct.PTB.wPtr);
-                            
-                        case 'BlackScreen'
-                            flip_onset = Screen('Flip',DataStruct.PTB.wPtr);
-                            
-                        case 'TextLoop' % same as 'Slide', but will be concatenated to produce 1 block
-                            DrawFormattedText(DataStruct.PTB.wPtr, EP.Data{evt,4} , 'center', 'center',[],[],[],[],2);
-                            flip_onset = Screen('Flip',DataStruct.PTB.wPtr);
-                            
-                        case 'Audio'
-                            if frame_counter == 1
-                                PsychPortAudio('FillBuffer', DataStruct.PTB.Playback_pahandle, [EP.Data{evt,4};EP.Data{evt,4}]);
-                                Screen('Flip',DataStruct.PTB.wPtr);
-                                startTime = PsychPortAudio('Start', DataStruct.PTB.Playback_pahandle , 1 , 0, 1);
-                                flip_onset = startTime;
-                            else
-                                flip_onset = Screen('Flip',DataStruct.PTB.wPtr);
-                            end
-                            
                         otherwise
                             error('Unrecognzed condition : %s',EP.Data{evt,1})
                             
@@ -96,13 +76,7 @@ try
                         ER.AddEvent({ EP.Data{evt,1} flip_onset-StartTime })
                     end
                     
-%                     % Skip
-%                     if keyCode(DataStruct.Parameters.Keybinds.RightArrow)
-%                         break
-%                     end
-                    
                 end % while
-                
                 
         end % switch
         

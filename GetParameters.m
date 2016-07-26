@@ -7,6 +7,12 @@ function [ Parameters ] = GetParameters( DataStruct )
 % HID NAR 12345
 
 
+%% Paths
+
+Parameters.Path.wav = ['wav' filesep];
+Parameters.Path.img = ['img' filesep];
+
+
 %% Set parameters
 
 %%%%%%%%%%%%%%

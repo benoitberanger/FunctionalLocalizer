@@ -29,7 +29,7 @@ switch get(hObject,'Tag')
         
     case 'pushbutton_Session'
         Task                     = 'Session';
-        SessionNumber            = str2double( get(handles.edit_IlluBlock,'String') );
+        SessionNumber            = str2double( get(handles.edit_SessionNumber,'String') );
         DataStruct.SessionNumber = SessionNumber;
         
     otherwise
