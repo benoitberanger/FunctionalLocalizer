@@ -70,25 +70,9 @@ try
                         case 'BlackScreen'
                             flip_onset = Screen('Flip',DataStruct.PTB.wPtr);
                             
-                        case 'TextLoop'
-                            t = 0;
-                            if frame_counter == 1 ;
-                                for w = 1:length(EP.Data{evt,4}.cell)
-                                    DrawFormattedText(DataStruct.PTB.wPtr, EP.Data{evt,4}.cell{w} , 'center', 'center',[],[],[],[],2);
-                                    flip_onset = Screen('Flip',DataStruct.PTB.wPtr);
-                                    if frame_counter == 1
-                                        % Save onset
-                                        ER.AddEvent({ EP.Data{evt,1} flip_onset-StartTime })
-                                    end
-                                    frame_counter = frame_counter + 1;
-                                    WaitSecs(EP.Data{evt,4}.dur.Text);
-                                    flip_onset = Screen('Flip',DataStruct.PTB.wPtr);
-                                    frame_counter = frame_counter + 1;
-                                    WaitSecs(EP.Data{evt,4}.dur.BlackScreen);
-                                end
-                            else
-                                flip_onset = GetSecs;
-                            end
+                        case 'TextLoop' % same as 'Slide', but will be concatenated to produce 1 block
+                            DrawFormattedText(DataStruct.PTB.wPtr, EP.Data{evt,4} , 'center', 'center',[],[],[],[],2);
+                            flip_onset = Screen('Flip',DataStruct.PTB.wPtr);
                             
                         case 'Audio'
                             if frame_counter == 1
