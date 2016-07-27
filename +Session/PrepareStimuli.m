@@ -110,7 +110,7 @@ Audio_Sinwave = [
 Stimuli.Audio_Sinwave = cell(size(Audio_Sinwave));
 for i = 1 : size(Audio_Sinwave,1)
     for j = 1 : size(Audio_Sinwave,2)
-        Stimuli.Audio_Sinwav{i,j} = Stimuli.Audio.(sprintf( 'sine%d' , Audio_Sinwave(i,j) ));
+        Stimuli.Audio_Sinwave{i,j} = Stimuli.Audio.(sprintf( 'sine%d' , Audio_Sinwave(i,j) ));
     end
 end
 
