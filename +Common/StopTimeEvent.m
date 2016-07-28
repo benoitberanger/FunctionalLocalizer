@@ -3,7 +3,7 @@ switch DataStruct.Task
     case 'Calibration'
         StopTime = GetSecs;
     otherwise
-        StopTime = WaitSecs('UntilTime', StartTime + EP.Data{evt,2} );
+        StopTime = WaitSecs('UntilTime', StartTime + ER.Data{ER.EventCount,2} + EP.Data{evt-1,3} );
 end
 
 % Record StopTime

@@ -88,37 +88,12 @@ try
                             event_onset = Screen('Flip',DataStruct.PTB.wPtr);
                             
                         case 'wav'
-                            DrawFormattedText(DataStruct.PTB.wPtr,'wavefile readung','center','center');
+                            DrawFormattedText(DataStruct.PTB.wPtr,'wavefile reading','center','center');
                             event_onset = Screen('Flip',DataStruct.PTB.wPtr);
                             
-                        case 'Cross_Rest'
-                            event_onset = GetSecs;
-                        case 'Horizontal_Checkerboard'
-                            event_onset = GetSecs;
-                        case 'Vertical_Checkerboard'
-                            event_onset = GetSecs;
-                        case 'Right_Audio_Click'
-                            event_onset = GetSecs;
-                        case 'Left_Audio_Click'
-                            event_onset = GetSecs;
-                        case 'Right_Video_Click'
-                            event_onset = GetSecs;
-                        case 'Left_Video_Click'
-                            event_onset = GetSecs;
-                        case 'Audio_Computation'
-                            event_onset = GetSecs;
-                        case 'Video_Computation'
-                            event_onset = GetSecs;
-                        case 'Video_Sentences'
-                            event_onset = GetSecs;
-                        case 'Audio_Sentences'
-                            event_onset = GetSecs;
-                        case 'Audio_Sinwave'
-                            event_onset = GetSecs;
-                            
-                            
                         otherwise
-                            error('Unrecognzed condition : %s',EP.Data{evt,1})
+                            event_onset = GetSecs;
+                            % error('Unrecognzed condition : %s',EP.Data{evt,1})
                             
                     end
                     
