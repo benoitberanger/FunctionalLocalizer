@@ -88,8 +88,12 @@ try
                             event_onset = Screen('Flip',DataStruct.PTB.wPtr);
                             
                         case 'wav'
-                            DrawFormattedText(DataStruct.PTB.wPtr,'wavefile reading','center','center');
-                            event_onset = Screen('Flip',DataStruct.PTB.wPtr);
+                            if frame_counter == 1
+                                PsychPortAudio('FillBuffer',DataStruct.PTB.Playback_pahandle,[EP.Data{evt,4} EP.Data{evt,4}]');
+                                event_onset = PsychPortAudio('Start',DataStruct.PTB.Playback_pahandle,[],StartTime + EP.Data{evt,2},1);
+                            else
+                                event_onset = GetSecs;
+                            end
                             
                         otherwise
                             event_onset = GetSecs;
@@ -111,6 +115,8 @@ try
                     end
                     
                 end % while
+                
+                PsychPortAudio('Stop',DataStruct.PTB.Playback_pahandle);
                 
         end % switch
         
