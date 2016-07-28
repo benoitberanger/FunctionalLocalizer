@@ -33,8 +33,8 @@ KL.BuildGraph;
 TaskData.KL = KL;
 
 % Save some values
-TaskData.StartTime        = StartTime;
-TaskData.StopTime         = StopTime;
+TaskData.StartTime = StartTime;
+TaskData.StopTime  = StopTime;
 
 
 %% Send infos to base workspace

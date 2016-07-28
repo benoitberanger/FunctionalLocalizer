@@ -320,16 +320,16 @@ for p = 1 : size(Paradigme,1)
         case 'Audio_Sinwave'
             Audio_Sinwave = Audio_Sinwave  + 1;
             for sinwave = 1 : 6
-                EP.AddPlanning({ 'wav' NextOnset(EP) Stimuli.Timing.Audio_Sinwave.Sin Stimuli.Audio_Sinwave{sinwave,Audio_Sinwave} });
+                EP.AddPlanning({ 'wav' NextOnset(EP) Stimuli.Timing.Audio_Sinwave.Sin Stimuli.Audio_Sinwave{Audio_Sinwave,sinwave} });
             end
             
         case 'Cross_Rest'
-            EP.AddPlanning({ 'Cross_Rest' NextOnset(EP) Stimuli.Timing.Cross_Rest.Duration [] });
+            EP.AddPlanning({ 'cross' NextOnset(EP) Stimuli.Timing.Cross_Rest.Duration [] });
             
     end
     
     
-    EP.AddPlanning({ 'Cross_Rest' NextOnset(EP) Paradigme{p,2} [] });
+    EP.AddPlanning({ 'cross' NextOnset(EP) Paradigme{p,2} [] });
     
 end
 
