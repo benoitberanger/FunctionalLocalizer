@@ -49,7 +49,7 @@ switch DataStruct.Environement
             'Cross_Rest'              0.800
             'Audio_Sinwave'           0.800
             'Horizontal_Checkerboard' 0.500
-            'Left_Audio_Click'        0.1400
+            'Right_Audio_Click'       0.1400
             'Audio_Sentences'         0.800
             'Right_Video_Click'       0.500
             'Audio_Sentences'         0.800
@@ -77,7 +77,7 @@ switch DataStruct.Environement
             'Cross_Rest'              0.200
             'Cross_Rest'              0.800
             'Audio_Computation'       0.1400
-            'Left_Audio_Click'        0.500
+            'Right_Audio_Click'       0.500
             'Audio_Sentences'         0.1100
             'Cross_Rest'              0.800
             'Vertical_Checkerboard'   0.800
@@ -97,14 +97,14 @@ switch DataStruct.Environement
             'Cross_Rest'              0.800
             'Audio_Computation'       0.500
             'Vertical_Checkerboard'   0.800
-            'Left_Audio_Click'        0.1100
+            'Right_Audio_Click'       0.1100
             'Audio_Sentences'         0.500
             'Horizontal_Checkerboard' 0.1400
             'Video_Computation'       0.800
             'Cross_Rest'              0.1400
             'Vertical_Checkerboard'   0.800
             'Video_Sentences'         0.800
-            'Left_Audio_Click'        0.200
+            'Right_Audio_Click'       0.200
             'Video_Computation'       0.1100
             'Video_Sentences'         0.500
             'Left_Audio_Click'        0.1100
@@ -131,7 +131,7 @@ switch DataStruct.Environement
             'Video_Computation'       0.1100
             'Horizontal_Checkerboard' 0.800
             'Right_Video_Click'       0.800
-            'Left_Audio_Click'        0.1100
+            'Right_Audio_Click'       0.1100
             'Video_Computation'       0.500
             'Audio_Sentences'         0.1100
             'Cross_Rest'              0.800

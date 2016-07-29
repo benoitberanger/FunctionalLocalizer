@@ -97,7 +97,7 @@ try
             case 'Vertical_Checkerboard'
                 durations{2} = [ durations{2} ; EventData{event+8+offcet,2}-EventData{event,2}] ;
             case 'Right_Audio_Click'
-                durations{3} = [ durations{6} ; EventData{event+1+offcet,2}-EventData{event,2}] ;
+                durations{3} = [ durations{3} ; EventData{event+1+offcet,2}-EventData{event,2}] ;
             case 'Left_Audio_Click'
                 durations{4} = [ durations{4} ; EventData{event+1+offcet,2}-EventData{event,2}] ;
             case 'Right_Video_Click'
@@ -126,48 +126,49 @@ try
     
     if ~strcmp(DataStruct.Task,'EyelinkCalibration')
         
-        n = length(names);
+        N = length(names);
         
         % CLICK
         
-        clic_spot.r = regexp(DataStruct.TaskData.KL.KbEvents(:,1),KbName(DataStruct.Parameters.Keybinds.Right_Blue_b_ASCII));
-        clic_spot.r = ~cellfun(@isempty,clic_spot.r);
-        clic_spot.r = find(clic_spot.r);
+        clic_spot.R = regexp(DataStruct.TaskData.KL.KbEvents(:,1),KbName(DataStruct.Parameters.Keybinds.Right_Blue_b_ASCII));
+        clic_spot.R = ~cellfun(@isempty,clic_spot.R);
+        clic_spot.R = find(clic_spot.R);
         
-        clic_spot.l = regexp(DataStruct.TaskData.KL.KbEvents(:,1),KbName(DataStruct.Parameters.Keybinds.Left_Yellow_y_ASCII));
-        clic_spot.l = ~cellfun(@isempty,clic_spot.l);
-        clic_spot.l = find(clic_spot.l);
+        clic_spot.L = regexp(DataStruct.TaskData.KL.KbEvents(:,1),KbName(DataStruct.Parameters.Keybinds.Left_Yellow_y_ASCII));
+        clic_spot.L = ~cellfun(@isempty,clic_spot.L);
+        clic_spot.L = find(clic_spot.L);
         
         count = 0 ;
-        sides = {'r' ; 'l'};
-        for side = 1:length(sides)
+        Sides = {'R' ; 'L'};
+        for side = 1:length(Sides)
             
             count = count + 1 ;
             
             switch side
                 case 1
-                    names{n+count} = 'CLICK_right';
+                    names{N+count} = 'CLICK_right';
                 case 2
-                    names{n+count} = 'CLICK_left';
+                    names{N+count} = 'CLICK_left';
             end
             
-            if ~isempty(DataStruct.TaskData.KL.KbEvents{clic_spot.(sides{side}),2})
-                clic_idx = cell2mat(DataStruct.TaskData.KL.KbEvents{clic_spot.(sides{side}),2}(:,2)) == 1;
+            if ~isempty(DataStruct.TaskData.KL.KbEvents{clic_spot.(Sides{side}),2})
+                clic_idx = cell2mat(DataStruct.TaskData.KL.KbEvents{clic_spot.(Sides{side}),2}(:,2)) == 1;
                 clic_idx = find(clic_idx);
                 % the last click can be be unfinished : button down + end of stim = no button up
-                if isempty(DataStruct.TaskData.KL.KbEvents{clic_spot.(sides{side}),2}{clic_idx(end),3})
-                    DataStruct.TaskData.KL.KbEvents{clic_spot.(sides{side}),2}{clic_idx(end),3} =  DataStruct.Taskdata.er.data{end,2} - DataStruct.TaskData.KL.KbEvents{clic_spot.(sides{side}),2}{clic_idx(end),1};
+                if isempty(DataStruct.TaskData.KL.KbEvents{clic_spot.(Sides{side}),2}{clic_idx(end),3})
+                    DataStruct.TaskData.KL.KbEvents{clic_spot.(Sides{side}),2}{clic_idx(end),3} =  DataStruct.TaskData.ER.Data{end,2} - DataStruct.TaskData.KL.KbEvents{clic_spot.(Sides{side}),2}{clic_idx(end),1};
                 end
-                onsets{n+count}    = cell2mat(DataStruct.TaskData.KL.KbEvents{clic_spot.(sides{side}),2}(clic_idx,1));
-                durations{n+count} = cell2mat(DataStruct.TaskData.KL.KbEvents{clic_spot.(sides{side}),2}(clic_idx,3));
+                onsets{N+count}    = cell2mat(DataStruct.TaskData.KL.KbEvents{clic_spot.(Sides{side}),2}(clic_idx,1));
+                durations{N+count} = cell2mat(DataStruct.TaskData.KL.KbEvents{clic_spot.(Sides{side}),2}(clic_idx,3));
             else
-                onsets{n+count}    = [];
-                durations{n+count} = [];
+                onsets{N+count}    = [];
+                durations{N+count} = [];
             end
             
         end
         
     end
+    
     
 catch err
     
