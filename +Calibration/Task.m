@@ -146,7 +146,7 @@ try
     fprintf('Volume calibration : ? \n')
     
     wavefile = 'calc40.wav';
-    [y, ~, ~] = wavread([DataStruct.Parameters.wav wavefile]);
+    [y, ~, ~] = wavread([DataStruct.Parameters.Path.wav wavefile]);
     PsychPortAudio('FillBuffer', DataStruct.PTB.Playback_pahandle, [y y]');
     
     fprintf('Press %s to repeat sound \n',upper(KbName(DataStruct.Parameters.Keybinds.emulTTL_s_ASCII)))
@@ -223,7 +223,7 @@ try
     fprintf('Screen calibration : ? \n')
     
     imgfile = 'mire.bmp';
-    Cross.img = imread([DataStruct.Parameters.wav imgfile]);
+    Cross.img = imread([DataStruct.Parameters.Path.img imgfile]);
     if ~exist('Cross.texturePtr','var')
         Cross.texturePtr = Screen('MakeTexture', DataStruct.PTB.wPtr, Cross.img);
     else

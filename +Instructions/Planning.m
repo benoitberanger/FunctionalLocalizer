@@ -126,13 +126,13 @@ EP.AddPlanning({ 'BlackScreen' NextOnset(EP) 1 []});
 
 % .........................................................................
 
-wavdata = wavread([DataStruct.Parameters.wav 'exemple.wav']);
+wavdata = wavread([DataStruct.Parameters.Path.wav 'exemple.wav']);
 dur = 4;
 EP.AddPlanning({ 'Audio' NextOnset(EP) dur wavdata'});
 
 % .........................................................................
 
-wavdata = wavread([DataStruct.Parameters.wav 'calc25.wav']);
+wavdata = wavread([DataStruct.Parameters.Path.wav 'calc25.wav']);
 dur = 4;
 EP.AddPlanning({ 'Audio' NextOnset(EP) dur wavdata'});
 
@@ -144,7 +144,7 @@ EP.AddPlanning({ 'Slide' NextOnset(EP) dur str});
 
 % .........................................................................
 
-wavdata = wavread([DataStruct.Parameters.wav 'exemple_sine.wav']);
+wavdata = wavread([DataStruct.Parameters.Path.wav 'exemple_sine.wav']);
 dur = 4;
 EP.AddPlanning({ 'Audio' NextOnset(EP) dur wavdata'});
 

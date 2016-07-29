@@ -1,6 +1,9 @@
 %% End of stimulation
 
 % EventRecorder
+if size(EP.Data,2)>3
+    EP.Data(:,4:end) = [];
+end
 ER.ClearEmptyEvents;
 ER.ComputeDurations;
 ER.BuildGraph;
