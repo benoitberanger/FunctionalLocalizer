@@ -9,7 +9,7 @@ yCoords = [0 0 -fixCrossDimPix fixCrossDimPix];
 allCoords = [xCoords; yCoords];
 
 % Set the line width for our fixation cross
-lineWidthPix = 4;
+lineWidthPix = 2;
 
 % Draw the fixation cross in white, set it to the center of our screen and
 % set good quality antialiasing

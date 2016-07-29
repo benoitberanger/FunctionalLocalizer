@@ -6,6 +6,8 @@ switch DataStruct.OperationMode
     otherwise
 end
 
+Common.DrawFixation;
+
 % Flip video
 Screen( 'Flip' , DataStruct.PTB.wPtr );
 

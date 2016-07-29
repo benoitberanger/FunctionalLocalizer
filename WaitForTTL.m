@@ -32,7 +32,7 @@ if strcmp(DataStruct.OperationMode,'Acquisition')
                 
                 case 'MRI'
                     
-                    if keyCode(DataStruct.Parameters.Keybinds.TTL_5_ASCII) || keyCode(DataStruct.Parameters.Keybinds.emulTTL_SpaceBar_ASCII)
+                    if keyCode(DataStruct.Parameters.Keybinds.TTL_t_ASCII) || keyCode(DataStruct.Parameters.Keybinds.emulTTL_s_ASCII)
                         break
                         
                     elseif keyCode(DataStruct.Parameters.Keybinds.Stop_Escape_ASCII)
@@ -50,10 +50,16 @@ if strcmp(DataStruct.OperationMode,'Acquisition')
                     
                 case 'Training'
                     
-                    if keyCode(DataStruct.Parameters.Keybinds.Right_Blue_1_ASCII) || keyCode(DataStruct.Parameters.Keybinds.TTL_5_ASCII) || keyCode(DataStruct.Parameters.Keybinds.emulTTL_SpaceBar_ASCII)
+                    if keyCode(DataStruct.Parameters.Keybinds.Right_Blue_b_ASCII) || keyCode(DataStruct.Parameters.Keybinds.TTL_t_ASCII) || keyCode(DataStruct.Parameters.Keybinds.emulTTL_s_ASCII)
                         break
                         
                     elseif keyCode(DataStruct.Parameters.Keybinds.Stop_Escape_ASCII)
+                        
+                        % Eyelink mode 'On' ?
+                        if strcmp(DataStruct.EyelinkMode,'On')
+                            Eyelink.STOP % Stop wrapper
+                        end
+                        
                         sca
                         stack = dbstack;
                         error('WitingForTTL:Abort','\n ESCAPE key : %s aborted \n',stack.file)
