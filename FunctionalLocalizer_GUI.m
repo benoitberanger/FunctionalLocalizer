@@ -1,4 +1,4 @@
-function FunctionalLocalizer_GUI
+function varargout = FunctionalLocalizer_GUI
 
 % global handles
 
@@ -615,7 +615,8 @@ if isempty(figPtr) % Create the figure
         'Units', 'Normalized',...
         'Position',[p_rv.x p_rv.y p_rv.w p_rv.h],...
         'BackgroundColor',figureBGcolor,...
-        'SelectionChangeFcn',@uipanel_RecordVideo_SelectionChangeFcn);
+        'SelectionChangeFcn',@uipanel_RecordVideo_SelectionChangeFcn,...
+        'Visible','Off');
     
     p_rv.nbO    = 3; % Number of objects
     p_rv.Ow     = 1/(p_rv.nbO + 1); % Object width
@@ -788,6 +789,7 @@ if isempty(figPtr) % Create the figure
     % assignin('base','handles',handles)
     % disp(handles)
     
+    figPtr = figHandle;
     
 else % Figure exists so brings it to the focus
     
@@ -797,6 +799,13 @@ else % Figure exists so brings it to the focus
     % FunctionalLocalizer_GUI;
     
 end
+
+if nargout > 0
+    
+    varargout{1} = guidata(figPtr);
+    
+end
+
 
 end % function
 
