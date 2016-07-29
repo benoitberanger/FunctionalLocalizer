@@ -19,11 +19,11 @@ switch DataStruct.OperationMode
     case 'Acquisition'
     case 'FastDebug'
         TR = 2.400; % seconds
-        nbVolumes = ceil( EP.Data{end,2} / TR ) + 2 ; % nb of volumes for the estimated time of stimulation + 2 to be safe
+        nbVolumes = ceil( EP.Data{end,2} / TR ) ; % nb of volumes for the estimated time of stimulation
         KL.GenerateMRITrigger( TR , nbVolumes , StartTime );
     case 'RealisticDebug'
         TR = 2.400; % seconds
-        nbVolumes = ceil( EP.Data{end,2} / TR ) + 2 ; % nb of volumes for the estimated time of stimulation + 2 to be safe
+        nbVolumes = ceil( EP.Data{end,2} / TR ); % nb of volumes for the estimated time of stimulation
         KL.GenerateMRITrigger( TR , nbVolumes , StartTime );
     otherwise
 end
