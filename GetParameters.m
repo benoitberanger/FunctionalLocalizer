@@ -45,7 +45,16 @@ end
 %%%%%%%%%%%%
 %   Text   %
 %%%%%%%%%%%%
-Parameters.Text.Size  = 30;
+switch DataStruct.Task
+    case 'Calibration'
+        Parameters.Text.Size  = 40;
+    case 'Instructions'
+        Parameters.Text.Size  = 40;
+    case 'Session'
+        Parameters.Text.Size  = 60;
+    case 'EyelinkCalibration'
+        Parameters.Text.Size  = 40;
+end
 Parameters.Text.Font  = 'Courier New';
 Parameters.Text.Color = [255 255 255]; % [R G B] ( from 0 to 255 )
 
