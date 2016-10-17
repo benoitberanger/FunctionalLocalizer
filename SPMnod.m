@@ -32,7 +32,7 @@ try
                 'Video_Computation'
                 'Video_Sentences'
                 'Audio_Sentences'
-                'Audio_Sinwave'
+%                 'Audio_Sinwave'
                 'Cross_Rest'
                 };
             
@@ -72,10 +72,10 @@ try
                 onsets{9} = [onsets{9} ; EventData{event,2}];
             case 'Audio_Sentences'
                 onsets{10} = [onsets{10} ; EventData{event,2}];
-            case 'Audio_Sinwave'
-                onsets{11} = [onsets{11} ; EventData{event,2}];
+%             case 'Audio_Sinwave'
+%                 onsets{11} = [onsets{11} ; EventData{event,2}];
             case 'Cross_Rest'
-                onsets{12} = [onsets{12} ; EventData{event,2}];
+                onsets{11} = [onsets{11} ; EventData{event,2}];
                 
         end
         
@@ -112,10 +112,10 @@ try
                 durations{9} = [ durations{9} ; EventData{event+8+offcet,2}-EventData{event,2}] ;
             case 'Audio_Sentences'
                 durations{10} = [ durations{10} ; EventData{event+1+offcet,2}-EventData{event,2}] ;
-            case 'Audio_Sinwave'
-                durations{11} = [ durations{11} ; EventData{event+6+offcet,2}-EventData{event,2}] ;
+%             case 'Audio_Sinwave'
+%                 durations{11} = [ durations{11} ; EventData{event+6+offcet,2}-EventData{event,2}] ;
             case 'Cross_Rest'
-                durations{12} = [ durations{12} ; EventData{event+1+offcet,2}-EventData{event,2}] ;
+                durations{11} = [ durations{11} ; EventData{event+1+offcet,2}-EventData{event,2}] ;
                 
         end
         

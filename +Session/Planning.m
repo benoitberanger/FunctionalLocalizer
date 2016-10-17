@@ -36,131 +36,237 @@ switch DataStruct.Environement
             'Video_Computation' rest
             'Video_Sentences' rest
             'Audio_Sentences' rest
-            'Audio_Sinwave' rest
+            %             'Audio_Sinwave' rest
             'Cross_Rest' rest
             };
         
     case 'MRI'
         
         Paradigme = {
-            'Video_Computation'       0.200
-            'Cross_Rest'              0.200
-            'Video_Computation'       0.1100
-            'Cross_Rest'              0.800
-            'Audio_Sinwave'           0.800
-            'Horizontal_Checkerboard' 0.500
-            'Right_Audio_Click'       0.1400
-            'Audio_Sentences'         0.800
-            'Right_Video_Click'       0.500
-            'Audio_Sentences'         0.800
-            'Left_Audio_Click'        0.800
-            'Left_Video_Click'        0.800
-            'Audio_Sentences'         0.1100
-            'Vertical_Checkerboard'   0.200
-            'Audio_Sinwave'           0.800
-            'Audio_Sinwave'           0.800
-            'Audio_Computation'       0.1400
-            'Video_Sentences'         0.500
-            'Video_Sentences'         0.800
-            'Audio_Sinwave'           0.1100
-            'Audio_Computation'       0.1100
-            'Audio_Computation'       0.500
-            'Cross_Rest'              0.800
-            'Cross_Rest'              0.500
-            'Video_Sentences'         0.1100
-            'Horizontal_Checkerboard' 0.500
-            'Left_Audio_Click'        0.1400
-            'Cross_Rest'              0.800
-            'Right_Video_Click'       0.200
-            'Left_Video_Click'        0.1400
-            'Video_Sentences'         0.800
-            'Cross_Rest'              0.200
-            'Cross_Rest'              0.800
-            'Audio_Computation'       0.1400
-            'Right_Audio_Click'       0.500
-            'Audio_Sentences'         0.1100
-            'Cross_Rest'              0.800
-            'Vertical_Checkerboard'   0.800
-            'Cross_Rest'              0.800
-            'Cross_Rest'              0.800
-            'Cross_Rest'              0.800
-            'Audio_Computation'       0.200
-            'Cross_Rest'              0.1100
-            'Cross_Rest'              0.800
-            'Left_Video_Click'        0.500
-            'Audio_Sentences'         0.1100
-            'Vertical_Checkerboard'   0.500
-            'Video_Computation'       0.1400
-            'Cross_Rest'              0.200
-            'Video_Sentences'         0.1400
-            'Audio_Computation'       0.500
-            'Cross_Rest'              0.800
-            'Audio_Computation'       0.500
-            'Vertical_Checkerboard'   0.800
-            'Right_Audio_Click'       0.1100
-            'Audio_Sentences'         0.500
-            'Horizontal_Checkerboard' 0.1400
-            'Video_Computation'       0.800
-            'Cross_Rest'              0.1400
-            'Vertical_Checkerboard'   0.800
-            'Video_Sentences'         0.800
-            'Right_Audio_Click'       0.200
-            'Video_Computation'       0.1100
-            'Video_Sentences'         0.500
-            'Left_Audio_Click'        0.1100
-            'Audio_Computation'       0.800
-            'Horizontal_Checkerboard' 0.800
-            'Audio_Sinwave'           0.1400
-            'Cross_Rest'              0.800
-            'Audio_Sinwave'           0.500
-            'Cross_Rest'              0.1100
-            'Cross_Rest'              0.200
-            'Horizontal_Checkerboard' 0.1100
-            'Audio_Computation'       0.1100
-            'Video_Sentences'         0.800
-            'Video_Computation'       0.800
-            'Video_Computation'       0.500
-            'Vertical_Checkerboard'   0.1100
-            'Audio_Sinwave'           0.500
-            'Vertical_Checkerboard'   0.800
-            'Vertical_Checkerboard'   0.500
-            'Left_Video_Click'        0.800
-            'Left_Video_Click'        0.800
-            'Cross_Rest'              0.200
-            'Horizontal_Checkerboard' 0.500
-            'Video_Computation'       0.1100
-            'Horizontal_Checkerboard' 0.800
-            'Right_Video_Click'       0.800
-            'Right_Audio_Click'       0.1100
-            'Video_Computation'       0.500
-            'Audio_Sentences'         0.1100
-            'Cross_Rest'              0.800
-            'Cross_Rest'              0.800
-            'Video_Sentences'         0.200
-            'Audio_Sinwave'           0.800
-            'Audio_Sinwave'           0.1100
-            'Horizontal_Checkerboard' 0.1100
-            'Audio_Computation'       0.800
-            'Cross_Rest'              0.1100
-            'Left_Audio_Click'        0.500
-            'Left_Audio_Click'        0.800
-            'Video_Computation'       0.1400
-            'Vertical_Checkerboard'   0.500
-            'Horizontal_Checkerboard' 0.800
-            'Audio_Sinwave'           0.500
-            'Horizontal_Checkerboard' 0.800
-            'Cross_Rest'              0.500
-            'Right_Video_Click'       0.800
-            'Vertical_Checkerboard'   0.1100
-            'Cross_Rest'              0.500
-            'Audio_Sentences'         0.1400
-            'Video_Sentences'         0.800
-            'Right_Video_Click'       0.200
-            'Audio_Sentences'         0.1100
-            'Audio_Sentences'         0.800
-            'Cross_Rest'              0.800
-            'Cross_Rest'              0.2200
+            'Video_Computation'	0.2
+            'Video_Computation'	1.1
+            'Cross_Rest'	0.8
+            'Horizontal_Checkerboard'	0.5
+            'Right_Audio_Click'	1.4
+            'Audio_Sentences'	0.8
+            'Right_Video_Click'	0.5
+            'Audio_Sentences'	0.8
+            'Left_Audio_Click'	0.8
+            'Left_Video_Click'	0.8
+            'Audio_Sentences'	1.1
+            'Vertical_Checkerboard'	0.2
+            'Audio_Computation'	1.4
+            'Video_Sentences'	0.5
+            'Video_Sentences'	0.8
+            'Audio_Computation'	1.1
+            'Audio_Computation'	0.5
+            'Cross_Rest'	0.8
+            'Cross_Rest'	0.5
+            'Video_Sentences'	1.1
+            'Horizontal_Checkerboard'	0.5
+            'Left_Audio_Click'	1.4
+            'Cross_Rest'	0.8
+            'Right_Video_Click'	0.2
+            'Left_Video_Click'	1.4
+            'Video_Sentences'	0.8
+            'Cross_Rest'	0.2
+            'Cross_Rest'	0.8
+            'Audio_Computation'	1.4
+            'Right_Audio_Click'	0.5
+            'Audio_Sentences'	1.1
+            'Cross_Rest'	0.8
+            'Vertical_Checkerboard'	0.8
+            'Cross_Rest'	0.8
+            'Cross_Rest'	0.8
+            'Cross_Rest'	0.8
+            'Audio_Computation'	0.2
+            'Cross_Rest'	1.1
+            'Cross_Rest'	0.8
+            'Left_Video_Click'	0.5
+            'Audio_Sentences'	1.1
+            'Vertical_Checkerboard'	0.5
+            'Video_Computation'	1.4
+            'Cross_Rest'	0.2
+            'Video_Sentences'	1.4
+            'Audio_Computation'	0.5
+            'Audio_Computation'	0.5
+            'Vertical_Checkerboard'	0.8
+            'Right_Audio_Click'	1.1
+            'Audio_Sentences'	0.5
+            'Horizontal_Checkerboard'	1.4
+            'Video_Computation'	0.8
+            'Vertical_Checkerboard'	0.8
+            'Video_Sentences'	0.8
+            'Right_Audio_Click'	0.2
+            'Video_Computation'	1.1
+            'Video_Sentences'	0.5
+            'Left_Audio_Click'	1.1
+            'Audio_Computation'	0.8
+            'Horizontal_Checkerboard'	0.8
+            'Cross_Rest'	0.8
+            'Cross_Rest'	1.1
+            'Cross_Rest'	0.2
+            'Horizontal_Checkerboard'	1.1
+            'Audio_Computation'	1.1
+            'Video_Sentences'	0.8
+            'Video_Computation'	0.8
+            'Video_Computation'	0.5
+            'Vertical_Checkerboard'	1.1
+            'Vertical_Checkerboard'	0.8
+            'Vertical_Checkerboard'	0.5
+            'Left_Video_Click'	0.8
+            'Left_Video_Click'	0.8
+            'Horizontal_Checkerboard'	0.5
+            'Video_Computation'	1.1
+            'Horizontal_Checkerboard'	0.8
+            'Right_Video_Click'	0.8
+            'Right_Audio_Click'	1.1
+            'Video_Computation'	0.5
+            'Audio_Sentences'	1.1
+            'Cross_Rest'	0.8
+            'Cross_Rest'	0.8
+            'Video_Sentences'	0.2
+            'Horizontal_Checkerboard'	1.1
+            'Audio_Computation'	0.8
+            'Left_Audio_Click'	0.5
+            'Left_Audio_Click'	0.8
+            'Video_Computation'	1.4
+            'Vertical_Checkerboard'	0.5
+            'Horizontal_Checkerboard'	0.8
+            'Horizontal_Checkerboard'	0.8
+            'Cross_Rest'	0.5
+            'Right_Video_Click'	0.8
+            'Vertical_Checkerboard'	1.1
+            'Cross_Rest'	0.5
+            'Audio_Sentences'	1.4
+            'Video_Sentences'	0.8
+            'Right_Video_Click'	0.2
+            'Audio_Sentences'	1.1
+            'Audio_Sentences'	0.8
+            'Cross_Rest'	0.8
+            'Cross_Rest'	2.2
+
             };
+        
+        %         Paradigme = {
+        %             'Video_Computation'       0.200
+        %             'Cross_Rest'              0.200
+        %             'Video_Computation'       0.1100
+        %             'Cross_Rest'              0.800
+        %             'Audio_Sinwave'           0.800
+        %             'Horizontal_Checkerboard' 0.500
+        %             'Right_Audio_Click'       0.1400
+        %             'Audio_Sentences'         0.800
+        %             'Right_Video_Click'       0.500
+        %             'Audio_Sentences'         0.800
+        %             'Left_Audio_Click'        0.800
+        %             'Left_Video_Click'        0.800
+        %             'Audio_Sentences'         0.1100
+        %             'Vertical_Checkerboard'   0.200
+        %             'Audio_Sinwave'           0.800
+        %             'Audio_Sinwave'           0.800
+        %             'Audio_Computation'       0.1400
+        %             'Video_Sentences'         0.500
+        %             'Video_Sentences'         0.800
+        %             'Audio_Sinwave'           0.1100
+        %             'Audio_Computation'       0.1100
+        %             'Audio_Computation'       0.500
+        %             'Cross_Rest'              0.800
+        %             'Cross_Rest'              0.500
+        %             'Video_Sentences'         0.1100
+        %             'Horizontal_Checkerboard' 0.500
+        %             'Left_Audio_Click'        0.1400
+        %             'Cross_Rest'              0.800
+        %             'Right_Video_Click'       0.200
+        %             'Left_Video_Click'        0.1400
+        %             'Video_Sentences'         0.800
+        %             'Cross_Rest'              0.200
+        %             'Cross_Rest'              0.800
+        %             'Audio_Computation'       0.1400
+        %             'Right_Audio_Click'       0.500
+        %             'Audio_Sentences'         0.1100
+        %             'Cross_Rest'              0.800
+        %             'Vertical_Checkerboard'   0.800
+        %             'Cross_Rest'              0.800
+        %             'Cross_Rest'              0.800
+        %             'Cross_Rest'              0.800
+        %             'Audio_Computation'       0.200
+        %             'Cross_Rest'              0.1100
+        %             'Cross_Rest'              0.800
+        %             'Left_Video_Click'        0.500
+        %             'Audio_Sentences'         0.1100
+        %             'Vertical_Checkerboard'   0.500
+        %             'Video_Computation'       0.1400
+        %             'Cross_Rest'              0.200
+        %             'Video_Sentences'         0.1400
+        %             'Audio_Computation'       0.500
+        %             'Cross_Rest'              0.800
+        %             'Audio_Computation'       0.500
+        %             'Vertical_Checkerboard'   0.800
+        %             'Right_Audio_Click'       0.1100
+        %             'Audio_Sentences'         0.500
+        %             'Horizontal_Checkerboard' 0.1400
+        %             'Video_Computation'       0.800
+        %             'Cross_Rest'              0.1400
+        %             'Vertical_Checkerboard'   0.800
+        %             'Video_Sentences'         0.800
+        %             'Right_Audio_Click'       0.200
+        %             'Video_Computation'       0.1100
+        %             'Video_Sentences'         0.500
+        %             'Left_Audio_Click'        0.1100
+        %             'Audio_Computation'       0.800
+        %             'Horizontal_Checkerboard' 0.800
+        %             'Audio_Sinwave'           0.1400
+        %             'Cross_Rest'              0.800
+        %             'Audio_Sinwave'           0.500
+        %             'Cross_Rest'              0.1100
+        %             'Cross_Rest'              0.200
+        %             'Horizontal_Checkerboard' 0.1100
+        %             'Audio_Computation'       0.1100
+        %             'Video_Sentences'         0.800
+        %             'Video_Computation'       0.800
+        %             'Video_Computation'       0.500
+        %             'Vertical_Checkerboard'   0.1100
+        %             'Audio_Sinwave'           0.500
+        %             'Vertical_Checkerboard'   0.800
+        %             'Vertical_Checkerboard'   0.500
+        %             'Left_Video_Click'        0.800
+        %             'Left_Video_Click'        0.800
+        %             'Cross_Rest'              0.200
+        %             'Horizontal_Checkerboard' 0.500
+        %             'Video_Computation'       0.1100
+        %             'Horizontal_Checkerboard' 0.800
+        %             'Right_Video_Click'       0.800
+        %             'Right_Audio_Click'       0.1100
+        %             'Video_Computation'       0.500
+        %             'Audio_Sentences'         0.1100
+        %             'Cross_Rest'              0.800
+        %             'Cross_Rest'              0.800
+        %             'Video_Sentences'         0.200
+        %             'Audio_Sinwave'           0.800
+        %             'Audio_Sinwave'           0.1100
+        %             'Horizontal_Checkerboard' 0.1100
+        %             'Audio_Computation'       0.800
+        %             'Cross_Rest'              0.1100
+        %             'Left_Audio_Click'        0.500
+        %             'Left_Audio_Click'        0.800
+        %             'Video_Computation'       0.1400
+        %             'Vertical_Checkerboard'   0.500
+        %             'Horizontal_Checkerboard' 0.800
+        %             'Audio_Sinwave'           0.500
+        %             'Horizontal_Checkerboard' 0.800
+        %             'Cross_Rest'              0.500
+        %             'Right_Video_Click'       0.800
+        %             'Vertical_Checkerboard'   0.1100
+        %             'Cross_Rest'              0.500
+        %             'Audio_Sentences'         0.1400
+        %             'Video_Sentences'         0.800
+        %             'Right_Video_Click'       0.200
+        %             'Audio_Sentences'         0.1100
+        %             'Audio_Sentences'         0.800
+        %             'Cross_Rest'              0.800
+        %             'Cross_Rest'              0.2200
+        %             };
         
 end
 
@@ -255,7 +361,7 @@ Video_Computation = 0;
 Audio_Computation = 0;
 Video_Sentences   = 0;
 Audio_Sentences   = 0;
-Audio_Sinwave     = 0;
+% Audio_Sinwave     = 0;
 
 for p = 1 : size(Paradigme,1)
     

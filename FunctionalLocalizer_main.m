@@ -1,7 +1,15 @@
 function FunctionalLocalizer_main(hObject, ~)
 
 if nargin == 0
-    error('Use %s, it will start a GUI.','FunctionalLocalizer_GUI.m');
+    
+    FunctionalLocalizer_GUI;
+    
+    fprintf('\n')
+    fprintf('Use %s to start the GUI.','FunctionalLocalizer_GUI.m');
+    fprintf('\n')
+    
+    return
+    
 end
 
 handles = guidata(hObject); % retrieve GUI data
@@ -10,8 +18,9 @@ clc
 sca
 
 % Initialize the main structure
-DataStruct           = struct;
-DataStruct.TimeStamp = datestr(now, 'yyyy-mm-dd HH:MM');
+DataStruct               = struct;
+DataStruct.TimeStamp     = datestr(now, 'yyyy-mm-dd HH:MM'); % readable
+DataStruct.TimeStampFile = datestr(now, 30); % to sort automatically by time of creation
 
 
 %% Task selection
@@ -140,9 +149,9 @@ RunNumber = num2str(LastRunNumber + 1);
 
 switch Task
     case 'Session'
-        DataFile = sprintf('%s%s_%s_S%d_%s_%s', DataPath, SubjectID, Task, SessionNumber, Environement, RunNumber );
+        DataFile = sprintf('%s%s_%s_%s_S%d_%s_%s', DataPath, DataStruct.TimeStampFile, SubjectID, Task, SessionNumber, Environement, RunNumber );
     otherwise
-        DataFile = sprintf('%s%s_%s_%s_%s', DataPath, SubjectID, Task, Environement, RunNumber );
+        DataFile = sprintf('%s%s_%s_%s_%s_%s', DataPath, DataStruct.TimeStampFile, SubjectID, Task, Environement, RunNumber );
 end
 
 DataStruct.SubjectID = SubjectID;

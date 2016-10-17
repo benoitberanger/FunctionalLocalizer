@@ -1,6 +1,6 @@
 % Here we set the size of the arms of our fixation cross
 % fixCrossDimPix = 40;
-fixCrossDimPix = DataStruct.PTB.wRect(end)/50;
+fixCrossDimPix = DataStruct.PTB.wRect(end)/30;
 
 % Now we set the coordinates (these are all relative to zero we will let
 % the drawing routine center the cross in the center of our monitor for us)
