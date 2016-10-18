@@ -559,18 +559,13 @@ if isempty(figPtr) % Create the figure
         'Callback',@FunctionalLocalizer_main);
     
     
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    session_factor = 1.40;
-    sess_w         = p_tk.Ow*session_factor;
-    
     % ---------------------------------------------------------------------
     % Pushbutton : Session
     
     p_tk.countO = p_tk.countO + 1;
     b_sess.x = p_tk.xposO(p_tk.countO);
     b_sess.y = buttun_y;
-    b_sess.w = sess_w;
+    b_sess.w = p_tk.Ow*2;
     b_sess.h = buttun_h;
     b_sess.tag = 'pushbutton_Session';
     handles.(b_sess.tag) = uicontrol(handles.uipanel_Task,...
@@ -581,24 +576,6 @@ if isempty(figPtr) % Create the figure
         'BackgroundColor',buttonBGcolor,...
         'Tag',b_sess.tag,...
         'Callback',@FunctionalLocalizer_main);
-    
-    
-    % ---------------------------------------------------------------------
-    % Pushbutton : Session number
-    
-    p_tk.countO = p_tk.countO + 1;
-    e_sn.x = p_tk.xposO(p_tk.countO)+p_tk.Ow*(session_factor-1);
-    e_sn.y = buttun_y*1.05;
-    e_sn.w = 2*p_tk.Ow - sess_w;
-    e_sn.h = buttun_h*0.90;
-    handles.edit_SessionNumber = uicontrol(handles.uipanel_Task,...
-        'Style','edit',...
-        'Units', 'Normalized',...
-        'Position',[e_sn.x e_sn.y e_sn.w e_sn.h],...
-        'String','1',...
-        'TooltipString','Session number of Illusion : from 1 to 4',...
-        'BackgroundColor',editBGcolor,...
-        'Callback',@edit_SessionNumber_Callback);
     
     
     %% Panel : Record video

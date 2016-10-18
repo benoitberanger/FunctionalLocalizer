@@ -38,8 +38,6 @@ switch get(hObject,'Tag')
         
     case 'pushbutton_Session'
         Task                     = 'Session';
-        SessionNumber            = str2double( get(handles.edit_SessionNumber,'String') );
-        DataStruct.SessionNumber = SessionNumber;
         
     otherwise
         error('FunctionalLocalizer:TaskSelection','Error in Task selection')
@@ -118,12 +116,7 @@ end
 
 % Prepare path
 DataPath = [fileparts(pwd) filesep 'data' filesep SubjectID filesep];
-switch Task
-    case 'Session'
-        DataPathNoRun = sprintf('%s_%s_S%d_%s_', SubjectID, Task, SessionNumber, Environement);
-    otherwise
-        DataPathNoRun = sprintf('%s_%s_%s_', SubjectID, Task, Environement);
-end
+DataPathNoRun = sprintf('%s_%s_%s_', SubjectID, Task, Environement);
 
 % Fetch content of the directory
 dirContent = dir(DataPath);
@@ -144,15 +137,9 @@ LastRunNumber = max(previousRun);
 if isempty(LastRunNumber)
     LastRunNumber = 0;
 end
-
 RunNumber = num2str(LastRunNumber + 1);
 
-switch Task
-    case 'Session'
-        DataFile = sprintf('%s%s_%s_%s_S%d_%s_%s', DataPath, DataStruct.TimeStampFile, SubjectID, Task, SessionNumber, Environement, RunNumber );
-    otherwise
-        DataFile = sprintf('%s%s_%s_%s_%s_%s', DataPath, DataStruct.TimeStampFile, SubjectID, Task, Environement, RunNumber );
-end
+DataFile = sprintf('%s%s_%s_%s_%s_%s', DataPath, DataStruct.TimeStampFile, SubjectID, Task, Environement, RunNumber );
 
 DataStruct.SubjectID = SubjectID;
 DataStruct.RunNumber = RunNumber;
@@ -229,7 +216,7 @@ switch get(get(handles.uipanel_EyelinkMode,'SelectedObject'),'Tag')
             case 'Instrcutions'
                 task = 'IN';
             case 'Session'
-                task = ['S' get(handles.edit_IlluBlock,'String')];
+                task = 'SE';
             otherwise
                 error('FunctionalLocalizer:Task','Task ?')
         end

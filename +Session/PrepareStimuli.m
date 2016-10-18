@@ -42,6 +42,7 @@ Stimuli.Audio_Computation = {
     Stimuli.Audio.calc3
     Stimuli.Audio.calc7
     };
+Stimuli.Audio_Computation = Shuffle(Stimuli.Audio_Computation);
 
 
 %% Video_Computation
@@ -58,7 +59,8 @@ Stimuli.Video_Computation = {
     'calculez'	'onze'      'moins'	'trois'
     'calculez'	'dix-sept'	'moins'	'six'
     };
-
+shuffledVect = Shuffle(1:size(Stimuli.Video_Computation,1));
+Stimuli.Video_Computation = Stimuli.Video_Computation(shuffledVect,:);
 
 
 %% Video_Sentences
@@ -75,6 +77,9 @@ Stimuli.Video_Sentences = {
     'la pluie'      'a rendu'       'la route'      'dangereuse'
     'Les roses'     'sont belles'	'mais elles'	'piquent'
     };
+shuffledVect = Shuffle(1:size(Stimuli.Video_Sentences,1));
+Stimuli.Video_Sentences = Stimuli.Video_Sentences(shuffledVect,:);
+
 
 %% Audio_Sentences
 
@@ -90,6 +95,7 @@ Stimuli.Audio_Sentences = {
     Stimuli.Audio.ph9
     Stimuli.Audio.ph10
     };
+Stimuli.Audio_Sentences = Shuffle(Stimuli.Audio_Sentences);
 
 
 %% Audio_Sinwave
@@ -106,6 +112,8 @@ Audio_Sinwave = [
     2	10	13	11	3	13
     10	11	2	13	3	3
     ];
+shuffledVect = Shuffle(1:size(Audio_Sinwave,1));
+Audio_Sinwave = Audio_Sinwave(shuffledVect,:);
 
 Stimuli.Audio_Sinwave = cell(size(Audio_Sinwave));
 for i = 1 : size(Audio_Sinwave,1)

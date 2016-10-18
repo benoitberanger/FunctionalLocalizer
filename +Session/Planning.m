@@ -145,7 +145,6 @@ switch DataStruct.Environement
             'Audio_Sentences'	0.8
             'Cross_Rest'	0.8
             'Cross_Rest'	2.2
-
             };
         
         %         Paradigme = {
@@ -330,10 +329,10 @@ Stimuli.Timing.Video_Sentences.Duration    = ...
 % Audio_Sentences
 Stimuli.Timing.Audio_Sentences.Duration = 2.200;
 
-% Audio_Sinwave
-Stimuli.Timing.Audio_Sinwave.Sin      = 0.400;
-Stimuli.Timing.Audio_Sinwave.Duration = ...
-    6 * Stimuli.Timing.Audio_Sinwave.Sin;
+% % Audio_Sinwave
+% Stimuli.Timing.Audio_Sinwave.Sin      = 0.400;
+% Stimuli.Timing.Audio_Sinwave.Duration = ...
+%     6 * Stimuli.Timing.Audio_Sinwave.Sin;
 
 % Cross_Rest
 Stimuli.Timing.Cross_Rest.Duration = 2.200;
@@ -423,11 +422,11 @@ for p = 1 : size(Paradigme,1)
             Audio_Sentences = Audio_Sentences  + 1;
             EP.AddPlanning({ 'wav' NextOnset(EP) Stimuli.Timing.Audio_Sentences.Duration Stimuli.Audio_Sentences{Audio_Sentences} });
             
-        case 'Audio_Sinwave'
-            Audio_Sinwave = Audio_Sinwave  + 1;
-            for sinwave = 1 : 6
-                EP.AddPlanning({ 'wav' NextOnset(EP) Stimuli.Timing.Audio_Sinwave.Sin Stimuli.Audio_Sinwave{Audio_Sinwave,sinwave} });
-            end
+            %         case 'Audio_Sinwave'
+            %             Audio_Sinwave = Audio_Sinwave  + 1;
+            %             for sinwave = 1 : 6
+            %                 EP.AddPlanning({ 'wav' NextOnset(EP) Stimuli.Timing.Audio_Sinwave.Sin Stimuli.Audio_Sinwave{Audio_Sinwave,sinwave} });
+            %             end
             
         case 'Cross_Rest'
             EP.AddPlanning({ 'cross' NextOnset(EP) Stimuli.Timing.Cross_Rest.Duration [] });
@@ -457,7 +456,7 @@ if nargout > 0
             
         case 'FastDebug'
             
-            Speed = 10;
+            Speed = 5;
             
             new_onsets = cellfun( @(x) {x/Speed} , EP.Data(:,2) );
             EP.Data(:,2) = new_onsets;
