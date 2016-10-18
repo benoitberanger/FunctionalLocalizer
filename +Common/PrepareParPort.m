@@ -13,22 +13,11 @@ switch DataStruct.ParPort
 end
 
 % Prepare messages
-switch DataStruct.Task
-    
-    case 'Calibration'
-        
-        
-    case 'Instructions'
-        
-        
-    case 'Session'
-        
-    otherwise
-        
-end
-
-msg.catch                = bin2dec('0 1 0 0 0 0 0 0');
-msg.click                = bin2dec('1 0 0 0 0 0 0 0');
+msg.cross       = 2^0; % 1
+msg.blackscreen = 2^1; % 2
+msg.word        = 2^2; % 4
+msg.img         = 2^3; % 8
+msg.wav         = 2^4; % 16
 
 % Pulse duration
 msg.duration             = 0.005; % seconds

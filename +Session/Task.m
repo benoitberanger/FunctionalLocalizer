@@ -1,6 +1,11 @@
 function [ TaskData ] = Task( DataStruct )
 
 try
+    %% Parallel port
+    
+    Common.PrepareParPort;
+    
+    
     %% Load and prepare all stimuli
     
     Session.LoadStimuli;
@@ -35,6 +40,7 @@ try
     
     event_onset = 0;
     Exit_flag = 0;
+    pp = 0;
     
     % Loop over the EventPlanning
     for evt = 1 : size( EP.Data , 1 )
@@ -59,7 +65,6 @@ try
                 % latter
                 if ~(event_onset < StartTime + EP.Data{evt+1,2} - DataStruct.PTB.slack * 1)
                     ER.AddEvent({ EP.Data{evt,1} [] })
-                    Common.CommandWindowDisplay;
                 end
                 
                 while event_onset < StartTime + EP.Data{evt+1,2} - DataStruct.PTB.slack * 1
@@ -103,6 +108,11 @@ try
                     Common.Movie.AddFrameToMovie;
                     
                     if frame_counter == 1
+                        
+                        if evt > 2
+                            Common.SendParPortMessage
+                        end
+                        
                         % Modification of the onset of the events with
                         % duration=0. We force them to have the same real
                         % onset, and still a duration of 0.
