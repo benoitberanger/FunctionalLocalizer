@@ -43,8 +43,8 @@ switch DataStruct.Environement
     case 'MRI'
         
         Paradigme = {
-            'Video_Computation'	0.2
-            'Video_Computation'	1.1
+            'Video_Computation'	1.4
+            'Video_Computation'	1.2
             'Cross_Rest'	0.8
             'Horizontal_Checkerboard'	0.5
             'Right_Audio_Click'	1.4
@@ -52,21 +52,21 @@ switch DataStruct.Environement
             'Right_Video_Click'	0.5
             'Audio_Sentences'	0.8
             'Left_Audio_Click'	0.8
-            'Left_Video_Click'	0.8
+            'Left_Video_Click'	0.9
             'Audio_Sentences'	1.1
-            'Vertical_Checkerboard'	0.2
+            'Vertical_Checkerboard'	0.3
             'Audio_Computation'	1.4
-            'Video_Sentences'	0.5
             'Video_Sentences'	0.8
+            'Video_Sentences'	0.5
+            'Audio_Computation'	1.3
             'Audio_Computation'	1.1
-            'Audio_Computation'	0.5
             'Cross_Rest'	0.8
             'Cross_Rest'	0.5
             'Video_Sentences'	1.1
             'Horizontal_Checkerboard'	0.5
             'Left_Audio_Click'	1.4
             'Cross_Rest'	0.8
-            'Right_Video_Click'	0.2
+            'Right_Video_Click'	0.5
             'Left_Video_Click'	1.4
             'Video_Sentences'	0.8
             'Cross_Rest'	0.2
@@ -79,29 +79,29 @@ switch DataStruct.Environement
             'Cross_Rest'	0.8
             'Cross_Rest'	0.8
             'Cross_Rest'	0.8
-            'Audio_Computation'	0.2
+            'Audio_Computation'	1.2
             'Cross_Rest'	1.1
             'Cross_Rest'	0.8
             'Left_Video_Click'	0.5
             'Audio_Sentences'	1.1
             'Vertical_Checkerboard'	0.5
             'Video_Computation'	1.4
-            'Cross_Rest'	0.2
+            'Cross_Rest'	0.7
             'Video_Sentences'	1.4
-            'Audio_Computation'	0.5
-            'Audio_Computation'	0.5
+            'Audio_Computation'	1.3
+            'Audio_Computation'	1.1
             'Vertical_Checkerboard'	0.8
             'Right_Audio_Click'	1.1
-            'Audio_Sentences'	0.5
+            'Audio_Sentences'	0.7
             'Horizontal_Checkerboard'	1.4
-            'Video_Computation'	0.8
+            'Video_Computation'	1.3
             'Vertical_Checkerboard'	0.8
             'Video_Sentences'	0.8
-            'Right_Audio_Click'	0.2
+            'Right_Audio_Click'	0.4
             'Video_Computation'	1.1
             'Video_Sentences'	0.5
             'Left_Audio_Click'	1.1
-            'Audio_Computation'	0.8
+            'Audio_Computation'	1.2
             'Horizontal_Checkerboard'	0.8
             'Cross_Rest'	0.8
             'Cross_Rest'	1.1
@@ -109,25 +109,25 @@ switch DataStruct.Environement
             'Horizontal_Checkerboard'	1.1
             'Audio_Computation'	1.1
             'Video_Sentences'	0.8
-            'Video_Computation'	0.8
-            'Video_Computation'	0.5
+            'Video_Computation'	1.4
+            'Video_Computation'	1.2
             'Vertical_Checkerboard'	1.1
             'Vertical_Checkerboard'	0.8
             'Vertical_Checkerboard'	0.5
             'Left_Video_Click'	0.8
             'Left_Video_Click'	0.8
             'Horizontal_Checkerboard'	0.5
-            'Video_Computation'	1.1
+            'Video_Computation'	1.3
             'Horizontal_Checkerboard'	0.8
             'Right_Video_Click'	0.8
             'Right_Audio_Click'	1.1
-            'Video_Computation'	0.5
+            'Video_Computation'	1.2
             'Audio_Sentences'	1.1
             'Cross_Rest'	0.8
             'Cross_Rest'	0.8
-            'Video_Sentences'	0.2
+            'Video_Sentences'	0.6
             'Horizontal_Checkerboard'	1.1
-            'Audio_Computation'	0.8
+            'Audio_Computation'	1.1
             'Left_Audio_Click'	0.5
             'Left_Audio_Click'	0.8
             'Video_Computation'	1.4
@@ -139,8 +139,8 @@ switch DataStruct.Environement
             'Vertical_Checkerboard'	1.1
             'Cross_Rest'	0.5
             'Audio_Sentences'	1.4
-            'Video_Sentences'	0.8
-            'Right_Video_Click'	0.2
+            'Video_Sentences'	0.9
+            'Right_Video_Click'	0.3
             'Audio_Sentences'	1.1
             'Audio_Sentences'	0.8
             'Cross_Rest'	0.8
@@ -150,82 +150,82 @@ switch DataStruct.Environement
         %         Paradigme = {
         %             'Video_Computation'       0.200
         %             'Cross_Rest'              0.200
-        %             'Video_Computation'       0.1100
+        %             'Video_Computation'       1.100
         %             'Cross_Rest'              0.800
         %             'Audio_Sinwave'           0.800
         %             'Horizontal_Checkerboard' 0.500
-        %             'Right_Audio_Click'       0.1400
+        %             'Right_Audio_Click'       1.400
         %             'Audio_Sentences'         0.800
         %             'Right_Video_Click'       0.500
         %             'Audio_Sentences'         0.800
         %             'Left_Audio_Click'        0.800
         %             'Left_Video_Click'        0.800
-        %             'Audio_Sentences'         0.1100
+        %             'Audio_Sentences'         1.100
         %             'Vertical_Checkerboard'   0.200
         %             'Audio_Sinwave'           0.800
         %             'Audio_Sinwave'           0.800
-        %             'Audio_Computation'       0.1400
+        %             'Audio_Computation'       1.400
         %             'Video_Sentences'         0.500
         %             'Video_Sentences'         0.800
-        %             'Audio_Sinwave'           0.1100
-        %             'Audio_Computation'       0.1100
+        %             'Audio_Sinwave'           1.100
+        %             'Audio_Computation'       1.100
         %             'Audio_Computation'       0.500
         %             'Cross_Rest'              0.800
         %             'Cross_Rest'              0.500
-        %             'Video_Sentences'         0.1100
+        %             'Video_Sentences'         1.100
         %             'Horizontal_Checkerboard' 0.500
-        %             'Left_Audio_Click'        0.1400
+        %             'Left_Audio_Click'        1.400
         %             'Cross_Rest'              0.800
         %             'Right_Video_Click'       0.200
-        %             'Left_Video_Click'        0.1400
+        %             'Left_Video_Click'        1.400
         %             'Video_Sentences'         0.800
         %             'Cross_Rest'              0.200
         %             'Cross_Rest'              0.800
-        %             'Audio_Computation'       0.1400
+        %             'Audio_Computation'       1.400
         %             'Right_Audio_Click'       0.500
-        %             'Audio_Sentences'         0.1100
+        %             'Audio_Sentences'         1.100
         %             'Cross_Rest'              0.800
         %             'Vertical_Checkerboard'   0.800
         %             'Cross_Rest'              0.800
         %             'Cross_Rest'              0.800
         %             'Cross_Rest'              0.800
         %             'Audio_Computation'       0.200
-        %             'Cross_Rest'              0.1100
+        %             'Cross_Rest'              1.100
         %             'Cross_Rest'              0.800
         %             'Left_Video_Click'        0.500
-        %             'Audio_Sentences'         0.1100
+        %             'Audio_Sentences'         1.100
         %             'Vertical_Checkerboard'   0.500
-        %             'Video_Computation'       0.1400
+        %             'Video_Computation'       1.400
         %             'Cross_Rest'              0.200
-        %             'Video_Sentences'         0.1400
+        %             'Video_Sentences'         1.400
         %             'Audio_Computation'       0.500
         %             'Cross_Rest'              0.800
         %             'Audio_Computation'       0.500
         %             'Vertical_Checkerboard'   0.800
-        %             'Right_Audio_Click'       0.1100
+        %             'Right_Audio_Click'       1.100
         %             'Audio_Sentences'         0.500
-        %             'Horizontal_Checkerboard' 0.1400
+        %             'Horizontal_Checkerboard' 1.400
         %             'Video_Computation'       0.800
-        %             'Cross_Rest'              0.1400
+        %             'Cross_Rest'              1.400
         %             'Vertical_Checkerboard'   0.800
         %             'Video_Sentences'         0.800
         %             'Right_Audio_Click'       0.200
-        %             'Video_Computation'       0.1100
+        %             'Video_Computation'       1.100
         %             'Video_Sentences'         0.500
-        %             'Left_Audio_Click'        0.1100
+        %             'Left_Audio_Click'        1.100
         %             'Audio_Computation'       0.800
         %             'Horizontal_Checkerboard' 0.800
-        %             'Audio_Sinwave'           0.1400
+        %             'Audio_Sinwave'           1.400
         %             'Cross_Rest'              0.800
         %             'Audio_Sinwave'           0.500
-        %             'Cross_Rest'              0.1100
+        %             'Cross_Rest'              1.100
         %             'Cross_Rest'              0.200
-        %             'Horizontal_Checkerboard' 0.1100
-        %             'Audio_Computation'       0.1100
+        %             'Horizontal_Checkerboard' 1.100
+        %             'Audio_Computation'       1.100
         %             'Video_Sentences'         0.800
         %             'Video_Computation'       0.800
         %             'Video_Computation'       0.500
-        %             'Vertical_Checkerboard'   0.1100
+        %             'Vertical_Checkerboard'   1.100
         %             'Audio_Sinwave'           0.500
         %             'Vertical_Checkerboard'   0.800
         %             'Vertical_Checkerboard'   0.500
@@ -233,38 +233,38 @@ switch DataStruct.Environement
         %             'Left_Video_Click'        0.800
         %             'Cross_Rest'              0.200
         %             'Horizontal_Checkerboard' 0.500
-        %             'Video_Computation'       0.1100
+        %             'Video_Computation'       1.100
         %             'Horizontal_Checkerboard' 0.800
         %             'Right_Video_Click'       0.800
-        %             'Right_Audio_Click'       0.1100
+        %             'Right_Audio_Click'       1.100
         %             'Video_Computation'       0.500
-        %             'Audio_Sentences'         0.1100
+        %             'Audio_Sentences'         1.100
         %             'Cross_Rest'              0.800
         %             'Cross_Rest'              0.800
         %             'Video_Sentences'         0.200
         %             'Audio_Sinwave'           0.800
-        %             'Audio_Sinwave'           0.1100
-        %             'Horizontal_Checkerboard' 0.1100
+        %             'Audio_Sinwave'           1.100
+        %             'Horizontal_Checkerboard' 1.100
         %             'Audio_Computation'       0.800
-        %             'Cross_Rest'              0.1100
+        %             'Cross_Rest'              1.100
         %             'Left_Audio_Click'        0.500
         %             'Left_Audio_Click'        0.800
-        %             'Video_Computation'       0.1400
+        %             'Video_Computation'       1.400
         %             'Vertical_Checkerboard'   0.500
         %             'Horizontal_Checkerboard' 0.800
         %             'Audio_Sinwave'           0.500
         %             'Horizontal_Checkerboard' 0.800
         %             'Cross_Rest'              0.500
         %             'Right_Video_Click'       0.800
-        %             'Vertical_Checkerboard'   0.1100
+        %             'Vertical_Checkerboard'   1.100
         %             'Cross_Rest'              0.500
-        %             'Audio_Sentences'         0.1400
+        %             'Audio_Sentences'         1.400
         %             'Video_Sentences'         0.800
         %             'Right_Video_Click'       0.200
-        %             'Audio_Sentences'         0.1100
+        %             'Audio_Sentences'         1.100
         %             'Audio_Sentences'         0.800
         %             'Cross_Rest'              0.800
-        %             'Cross_Rest'              0.2200
+        %             'Cross_Rest'              2.200
         %             };
         
 end
