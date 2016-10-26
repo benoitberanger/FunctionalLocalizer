@@ -1,11 +1,13 @@
 %% Horizontal_Checkerboard
 
-Stimuli.Horizontal_Checkerboard = [Stimuli.Image.checherboardHpb Stimuli.Image.checherboardHnb];
+% Stimuli.Horizontal_Checkerboard = [Stimuli.Image.checherboardHpb Stimuli.Image.checherboardHnb];
+Stimuli.Horizontal_Checkerboard = [Stimuli.Checkerboard.Horitontal.Positive Stimuli.Checkerboard.Horitontal.Negative];
 
 
 %% Vertical_Checkerboard
 
-Stimuli.Vertical_Checkerboard = [Stimuli.Image.checherboardVpb Stimuli.Image.checherboardVnb];
+% Stimuli.Vertical_Checkerboard = [Stimuli.Image.checherboardVpb Stimuli.Image.checherboardVnb];
+Stimuli.Vertical_Checkerboard = [Stimuli.Checkerboard.Vertical.Positive Stimuli.Checkerboard.Vertical.Negative];
 
 
 %% Right_Audio_Click

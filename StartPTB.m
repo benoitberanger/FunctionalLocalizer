@@ -1,6 +1,6 @@
 function [ PTB ] = StartPTB( DataStruct )
 
-%% Audio 
+%% Audio
 
 % Perform basic initialization of the sound driver:
 InitializePsychSound(1);

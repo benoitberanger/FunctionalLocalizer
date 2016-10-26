@@ -24,7 +24,7 @@ switch DataStruct.Environement
     
     case 'Training'
         
-        rest = 0.500;
+        rest = 1.000;
         Paradigme = {
             'Horizontal_Checkerboard' rest
             'Vertical_Checkerboard' rest

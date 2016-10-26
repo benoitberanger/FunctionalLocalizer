@@ -24,3 +24,9 @@ for i = 1 : length(img_content)
     current_img = imread([DataStruct.Parameters.Path.img img_name{i} '.bmp']);
     Stimuli.Image.(img_name{i}) = Screen( 'MakeTexture' , DataStruct.PTB.wPtr , current_img );
 end
+
+
+%% New method for the checkerboard : dynamic generation
+
+[Stimuli.Checkerboard.Horitontal.Positive, Stimuli.Checkerboard.Horitontal.Negative] = Common.Checkerboard.Generate(DataStruct,'Horizontal');
+[Stimuli.Checkerboard.Vertical.  Positive, Stimuli.Checkerboard.Vertical.  Negative] = Common.Checkerboard.Generate(DataStruct,'Vertical'  );
