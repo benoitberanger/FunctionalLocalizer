@@ -110,8 +110,8 @@ DataStruct.RecordVideo = RecordVideo;
 
 SubjectID = get(handles.edit_SubjectID,'String');
 
-if isempty(SubjectID)
-    error('FunctionalLocalizer:SubjectIDLength','\n SubjectID is required \n')
+if length(SubjectID) ~= 4
+    error('FunctionalLocalizer:SubjectIDLength','\n SubjectID must be 4 char \n')
 end
 
 % Prepare path
@@ -210,13 +210,13 @@ switch get(get(handles.uipanel_EyelinkMode,'SelectedObject'),'Tag')
         % File name for the eyelink : 8 char maximum
         switch Task
             case 'EyelinkCalibration'
-                task = 'EC';
+                task = 'E';
             case 'Calibration'
-                task = 'CA';
-            case 'Instrcutions'
-                task = 'IN';
+                task = 'C';
+            case 'Instructions'
+                task = 'I';
             case 'Session'
-                task = 'SE';
+                task = 'S';
             otherwise
                 error('FunctionalLocalizer:Task','Task ?')
         end

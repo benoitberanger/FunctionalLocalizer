@@ -22,7 +22,7 @@ try
     
     %% Start recording eye motions
     
-    % no eyelink for calibration
+    Common.StartRecordingEyelink;
     
     
     %% Start

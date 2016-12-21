@@ -22,7 +22,7 @@ try
     
     %% Start recording eye motions
     
-    % no eyelink for calibration
+    Common.StartRecordingEyelink;
     
     
     %% Go
@@ -63,7 +63,7 @@ try
                             flip_onset = Screen('Flip',DataStruct.PTB.wPtr);
                             
                         case 'SlideFixation'
-                            DrawFormattedText(DataStruct.PTB.wPtr, EP.Data{evt,4} , 'center', 0,[],[],[],[],2);
+                            DrawFormattedText(DataStruct.PTB.wPtr, EP.Data{evt,4} , 'center', DataStruct.PTB.CenterV/2,[],[],[],[],2);
                             Common.DrawFixation;
                             flip_onset = Screen('Flip',DataStruct.PTB.wPtr);
                             
